@@ -1,0 +1,13 @@
+class: EntranceBookRecord
+table: entrance_book_record
+fields:
+  date: DateTime
+  admissionWay: String
+  name: String
+  shortDescription: String?
+  numberOfItems: int
+  material: String
+  fundCollectionId: int, relation(parent=fund_collection)
+  integrity: String
+  note: String?
+  location: String

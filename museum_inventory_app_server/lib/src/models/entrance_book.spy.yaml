@@ -1,0 +1,4 @@
+class: EntranceBook
+table: entrance_book
+fields:
+  recordId: int, relation(parent=entrance_book_record)

@@ -1,0 +1,16 @@
+class: InventoryBookRecord
+table: inventory_book_record
+fields:
+  date: DateTime
+  name: String
+  longDescription: String?
+  origin: String
+  history: String
+  material: String
+  technique: String
+  size: String
+  weight: String
+  integrity: String
+  admissionWay: String
+  note: String?
+  signed: bool

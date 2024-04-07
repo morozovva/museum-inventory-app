@@ -1,0 +1,8 @@
+class: Owner
+table: owner
+fields:
+  fio: String
+  phoneNumber: String
+  mail: String
+  dateOfBirth: DateTime
+  homeAddress: String

@@ -1,0 +1,6 @@
+class: ProtocolEFZK
+table: protocol_efzk
+fields:
+  date: DateTime
+  discussion: String
+  conclusion: String

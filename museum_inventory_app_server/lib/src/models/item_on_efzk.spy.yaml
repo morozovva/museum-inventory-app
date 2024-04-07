@@ -1,0 +1,8 @@
+class: ItemOnEfzk
+table: item_on_efzk
+fields:
+  itemId: int, relation(parent=item)
+  shortDesc: String
+  integrity: String
+  decision: String
+  fundCollectionId: int, relation(parent=fund_collection)

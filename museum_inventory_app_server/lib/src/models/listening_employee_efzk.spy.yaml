@@ -1,0 +1,5 @@
+class: ListeningEmployeeEfzk
+table: listening_employee_efzk
+fields:
+  protocolId: int, relation(parent=protocol_efzk)
+  employeeId: int, relation(parent=employee)

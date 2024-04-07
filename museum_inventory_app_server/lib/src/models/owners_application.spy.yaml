@@ -1,0 +1,5 @@
+class: OwnersApplication
+table: owners_application
+fields:
+  file: String
+  ownerId: int, relation(parent=owner)

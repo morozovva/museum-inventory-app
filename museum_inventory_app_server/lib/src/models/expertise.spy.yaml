@@ -1,0 +1,4 @@
+class: Expertise
+table: expertise
+fields:
+  file: String

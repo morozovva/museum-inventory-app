@@ -1,0 +1,5 @@
+class: FundCollection
+table: fund_collection
+fields:
+  name: String
+  shortName: String?

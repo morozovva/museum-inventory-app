@@ -1,0 +1,7 @@
+class: ActVHEFZK
+table: act_vh_efzk
+fields:
+  date: DateTime
+  note: String
+  employeeId: int, relation(parent=employee)
+  signed: bool

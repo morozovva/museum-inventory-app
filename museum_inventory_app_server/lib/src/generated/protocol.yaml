@@ -1,0 +1,7 @@
+example:
+  - hello:
+items:
+  - getAllItems:
+  - createItem:
+  - updateItem:
+  - deleteItem:

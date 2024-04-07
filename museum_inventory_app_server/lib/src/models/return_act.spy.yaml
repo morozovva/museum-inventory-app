@@ -1,0 +1,7 @@
+class: ReturnAct
+table: return_act
+fields:
+  date: DateTime
+  returnBasis: String
+  employeeId: int, relation(parent=employee)
+  integrity: String

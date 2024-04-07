@@ -1,0 +1,4 @@
+class: InventoryBook
+table: inventory_book
+fields:
+  recordId: int, relation(parent=inventory_book_record)

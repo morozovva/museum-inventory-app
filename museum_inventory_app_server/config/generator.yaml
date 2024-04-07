@@ -1,0 +1,3 @@
+type: server
+
+client_package_path: ../museum_inventory_app_client

@@ -1,0 +1,14 @@
+class: Item
+table: item
+fields:
+  name: String
+  integrity: String?
+  appearance: String?
+  origin: String?
+  ownerApplicationId: int?, relation(parent=owners_application)
+  actVhEfzkId: int?, relation(parent=act_vh_efzk)
+  returnActId: int?, relation(parent=return_act)
+  permanentAcceptanceActId: int?, relation(parent=permanent_acceptance_act)
+  decomissionActId: int?, relation(parent=decomission_act)
+  entranceBookRecordId: int?, relation(parent=entrance_book_record)
+  inventoryBookRecordId: int?, relation(parent=inventory_book_record)

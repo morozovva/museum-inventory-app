@@ -1,0 +1,4 @@
+class: Position
+table: position
+fields:
+  name: String

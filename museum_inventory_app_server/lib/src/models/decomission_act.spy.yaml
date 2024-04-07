@@ -1,0 +1,8 @@
+class: DecomissionAct
+table: decomission_act
+fields:
+  date: DateTime
+  basis: String
+  orderId: int, relation(parent=decomission_order)
+  integrity: String
+  employeeId: int, relation(parent=employee)

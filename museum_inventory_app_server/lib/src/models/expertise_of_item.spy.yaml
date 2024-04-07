@@ -1,0 +1,5 @@
+class: ExpertiseOfItem
+table: expertise_of_item
+fields:
+  itemId: int, relation(parent=item)
+  expertiseId: int, relation(parent=expertise)

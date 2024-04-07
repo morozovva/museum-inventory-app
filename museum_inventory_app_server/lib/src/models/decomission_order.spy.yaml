@@ -1,0 +1,4 @@
+class: DecomissionOrder
+table: decomission_order
+fields:
+  file: String

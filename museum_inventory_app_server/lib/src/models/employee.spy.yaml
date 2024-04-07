@@ -1,0 +1,13 @@
+class: Employee
+table: employee
+fields:
+  name: String
+  surname: String
+  patronymic: String
+  dateOfBirth: DateTime
+  phoneNumber: String
+  password: String
+  mail: String?
+  acceptanceDate: DateTime
+  dismissalDate: DateTime?
+  positionId: int, relation(parent=position)

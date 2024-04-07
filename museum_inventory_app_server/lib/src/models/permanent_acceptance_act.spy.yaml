@@ -1,0 +1,7 @@
+class: PermanentAcceptanceAct
+table: permanent_acceptance_act
+fields:
+  date: DateTime
+  acceptanceBasis: String
+  employeeId: int, relation(parent=employee)
+  signed: bool

@@ -1,0 +1,5 @@
+class: ItemInEfzkProtocol
+table: item_in_efzk_protocol
+fields:
+  itemOnEfzkId: int, relation(parent=item_on_efzk)
+  protocolId: int, relation(parent=protocol_efzk)

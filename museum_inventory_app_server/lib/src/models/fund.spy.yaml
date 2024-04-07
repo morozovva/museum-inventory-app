@@ -1,0 +1,5 @@
+class: Fund
+table: fund
+fields:
+  fundCollectionId: int, relation(parent=fund_collection)
+  shortName: String?
