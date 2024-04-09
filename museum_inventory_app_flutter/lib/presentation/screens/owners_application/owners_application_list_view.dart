@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:museum_inventory_app_flutter/presentation/cubits/owners_application_list/owners_application_list_cubit.dart';
+import 'package:museum_inventory_app_flutter/presentation/screens/common/state_screens/loading_screen.dart';
+import 'package:museum_inventory_app_flutter/presentation/screens/owners_application/owner_application_list_tile.dart';
 
-import '../../cubits/items_list/items_list_cubit.dart';
-import '../common/state_screens/error_screen.dart';
-import '../common/state_screens/loading_screen.dart';
-import 'item_card.dart';
-import 'item_list_tile.dart';
 import '../common/show_card_dialog.dart';
+import '../common/state_screens/error_screen.dart';
+import 'owners_application_card.dart';
 
-class ItemsListView extends StatelessWidget {
-  const ItemsListView({super.key});
+class OwnersApplicationListView extends StatelessWidget {
+  const OwnersApplicationListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,21 +17,22 @@ class ItemsListView extends StatelessWidget {
       const SizedBox(width: 24),
       Expanded(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Предметы",
+                  "Заявления владельцев",
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
                 IconButton(
                   onPressed: () {
                     showCardDialog(
                         context,
-                        const ItemCard(
-                          item: null,
+                        const OwnersApplicationCard(
+                          ownersApplication: null,
                         ));
                   },
                   icon: const Icon(
@@ -45,17 +46,17 @@ class ItemsListView extends StatelessWidget {
               height: 32,
             ),
             Expanded(
-              child: BlocBuilder<ItemsListCubit, ItemsListState>(
+              child: BlocBuilder<OwnersApplicationListCubit,
+                  OwnersApplicationListState>(
                 builder: (context, state) {
                   return state.maybeWhen(
-                    itemsLoaded: (items) {
-                      final itemList = items.reversed.toList();
+                    ownersApplicationLoaded: (ownersApplication) {
                       return ListView.builder(
-                        itemCount: itemList.length,
+                        itemCount: ownersApplication.length,
                         padding: const EdgeInsets.only(bottom: 8),
                         itemBuilder: (context, index) {
-                          return ItemListTile(
-                            item: itemList[index],
+                          return OwnersApplicationListTile(
+                            ownersApplication: ownersApplication[index],
                           );
                         },
                       );

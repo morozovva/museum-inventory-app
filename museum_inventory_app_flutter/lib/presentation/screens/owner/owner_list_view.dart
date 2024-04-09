@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:museum_inventory_app_flutter/presentation/screens/common/state_screens/error_screen.dart';
 
+import '../../cubits/owners_list/owners_list_cubit.dart';
 import '../common/show_card_dialog.dart';
+import '../common/state_screens/loading_screen.dart';
 import 'owner_card.dart';
+import 'owner_list_tile.dart';
 
 class OwnersListView extends StatelessWidget {
   const OwnersListView({super.key});
@@ -40,29 +44,31 @@ class OwnersListView extends StatelessWidget {
             const SizedBox(
               height: 32,
             ),
-            // Expanded(
-            //   child: BlocBuilder<OwnersListCubit, OwnersListState>(
-            //     builder: (context, state) {
-            //       print(state);
-            //       return state.maybeWhen(
-            //         ownersLoaded: (owners) {
-            //           return ListView.builder(
-            //             itemCount: owners.length,
-            //             padding: const EdgeInsets.only(bottom: 8),
-            //             itemBuilder: (context, index) {
-            //               return OwnerListTile(
-            //                 owner: owners[index],
-            //               );
-            //             },
-            //           );
-            //         },
-            //         orElse: () {
-            //           return const SizedBox.shrink();
-            //         },
-            //       );
-            //     },
-            //   ),
-            // ),
+            Expanded(
+              child: BlocBuilder<OwnersListCubit, OwnersListState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    ownersLoaded: (owners) {
+                      return ListView.builder(
+                        itemCount: owners.length,
+                        padding: const EdgeInsets.only(bottom: 8),
+                        itemBuilder: (context, index) {
+                          return OwnerListTile(
+                            owner: owners[index],
+                          );
+                        },
+                      );
+                    },
+                    error: () {
+                      return const ErrorScreen();
+                    },
+                    orElse: () {
+                      return const LoadingScreen();
+                    },
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),

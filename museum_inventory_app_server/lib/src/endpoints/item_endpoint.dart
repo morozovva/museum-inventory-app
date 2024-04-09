@@ -10,6 +10,13 @@ class ItemsEndpoint extends Endpoint {
     );
   }
 
+  Future<Item?> getItem(Session session, int id) async {
+    return await Item.db.findById(
+      session,
+      id,
+    );
+  }
+
   Future<void> createItem(Session session, Item item) async {
     await Item.db.insertRow(session, item);
   }

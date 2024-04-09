@@ -6,8 +6,8 @@ fields:
   patronymic: String
   dateOfBirth: DateTime
   phoneNumber: String
-  password: String
+  password: String?
   mail: String?
   acceptanceDate: DateTime
   dismissalDate: DateTime?
-  positionId: int, relation(parent=position)
+  position: Position?, relation

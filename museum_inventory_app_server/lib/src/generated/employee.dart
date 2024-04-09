@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
+import 'protocol.dart' as _i2;
 import 'package:serverpod_serialization/serverpod_serialization.dart';
 
 abstract class Employee extends _i1.TableRow {
@@ -19,11 +20,12 @@ abstract class Employee extends _i1.TableRow {
     required this.patronymic,
     required this.dateOfBirth,
     required this.phoneNumber,
-    required this.password,
+    this.password,
     this.mail,
     required this.acceptanceDate,
     this.dismissalDate,
     required this.positionId,
+    this.position,
   }) : super(id);
 
   factory Employee({
@@ -33,11 +35,12 @@ abstract class Employee extends _i1.TableRow {
     required String patronymic,
     required DateTime dateOfBirth,
     required String phoneNumber,
-    required String password,
+    String? password,
     String? mail,
     required DateTime acceptanceDate,
     DateTime? dismissalDate,
     required int positionId,
+    _i2.Position? position,
   }) = _EmployeeImpl;
 
   factory Employee.fromJson(
@@ -56,7 +59,7 @@ abstract class Employee extends _i1.TableRow {
       phoneNumber: serializationManager
           .deserialize<String>(jsonSerialization['phoneNumber']),
       password: serializationManager
-          .deserialize<String>(jsonSerialization['password']),
+          .deserialize<String?>(jsonSerialization['password']),
       mail:
           serializationManager.deserialize<String?>(jsonSerialization['mail']),
       acceptanceDate: serializationManager
@@ -65,6 +68,8 @@ abstract class Employee extends _i1.TableRow {
           .deserialize<DateTime?>(jsonSerialization['dismissalDate']),
       positionId: serializationManager
           .deserialize<int>(jsonSerialization['positionId']),
+      position: serializationManager
+          .deserialize<_i2.Position?>(jsonSerialization['position']),
     );
   }
 
@@ -82,7 +87,7 @@ abstract class Employee extends _i1.TableRow {
 
   String phoneNumber;
 
-  String password;
+  String? password;
 
   String? mail;
 
@@ -91,6 +96,8 @@ abstract class Employee extends _i1.TableRow {
   DateTime? dismissalDate;
 
   int positionId;
+
+  _i2.Position? position;
 
   @override
   _i1.Table get table => t;
@@ -107,6 +114,7 @@ abstract class Employee extends _i1.TableRow {
     DateTime? acceptanceDate,
     DateTime? dismissalDate,
     int? positionId,
+    _i2.Position? position,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -117,11 +125,12 @@ abstract class Employee extends _i1.TableRow {
       'patronymic': patronymic,
       'dateOfBirth': dateOfBirth.toJson(),
       'phoneNumber': phoneNumber,
-      'password': password,
+      if (password != null) 'password': password,
       if (mail != null) 'mail': mail,
       'acceptanceDate': acceptanceDate.toJson(),
       if (dismissalDate != null) 'dismissalDate': dismissalDate?.toJson(),
       'positionId': positionId,
+      if (position != null) 'position': position?.toJson(),
     };
   }
 
@@ -152,11 +161,12 @@ abstract class Employee extends _i1.TableRow {
       'patronymic': patronymic,
       'dateOfBirth': dateOfBirth.toJson(),
       'phoneNumber': phoneNumber,
-      'password': password,
+      if (password != null) 'password': password,
       if (mail != null) 'mail': mail,
       'acceptanceDate': acceptanceDate.toJson(),
       if (dismissalDate != null) 'dismissalDate': dismissalDate?.toJson(),
       'positionId': positionId,
+      if (position != null) 'position': position?.allToJson(),
     };
   }
 
@@ -216,6 +226,7 @@ abstract class Employee extends _i1.TableRow {
     bool orderDescending = false,
     bool useCache = true,
     _i1.Transaction? transaction,
+    EmployeeInclude? include,
   }) async {
     return session.db.find<Employee>(
       where: where != null ? where(Employee.t) : null,
@@ -226,6 +237,7 @@ abstract class Employee extends _i1.TableRow {
       orderDescending: orderDescending,
       useCache: useCache,
       transaction: transaction,
+      include: include,
     );
   }
 
@@ -238,6 +250,7 @@ abstract class Employee extends _i1.TableRow {
     bool orderDescending = false,
     bool useCache = true,
     _i1.Transaction? transaction,
+    EmployeeInclude? include,
   }) async {
     return session.db.findSingleRow<Employee>(
       where: where != null ? where(Employee.t) : null,
@@ -246,15 +259,20 @@ abstract class Employee extends _i1.TableRow {
       orderDescending: orderDescending,
       useCache: useCache,
       transaction: transaction,
+      include: include,
     );
   }
 
   @Deprecated('Will be removed in 2.0.0. Use: db.findById instead.')
   static Future<Employee?> findById(
     _i1.Session session,
-    int id,
-  ) async {
-    return session.db.findById<Employee>(id);
+    int id, {
+    EmployeeInclude? include,
+  }) async {
+    return session.db.findById<Employee>(
+      id,
+      include: include,
+    );
   }
 
   @Deprecated('Will be removed in 2.0.0. Use: db.deleteWhere instead.')
@@ -322,8 +340,8 @@ abstract class Employee extends _i1.TableRow {
     );
   }
 
-  static EmployeeInclude include() {
-    return EmployeeInclude._();
+  static EmployeeInclude include({_i2.PositionInclude? position}) {
+    return EmployeeInclude._(position: position);
   }
 
   static EmployeeIncludeList includeList({
@@ -357,11 +375,12 @@ class _EmployeeImpl extends Employee {
     required String patronymic,
     required DateTime dateOfBirth,
     required String phoneNumber,
-    required String password,
+    String? password,
     String? mail,
     required DateTime acceptanceDate,
     DateTime? dismissalDate,
     required int positionId,
+    _i2.Position? position,
   }) : super._(
           id: id,
           name: name,
@@ -374,6 +393,7 @@ class _EmployeeImpl extends Employee {
           acceptanceDate: acceptanceDate,
           dismissalDate: dismissalDate,
           positionId: positionId,
+          position: position,
         );
 
   @override
@@ -384,11 +404,12 @@ class _EmployeeImpl extends Employee {
     String? patronymic,
     DateTime? dateOfBirth,
     String? phoneNumber,
-    String? password,
+    Object? password = _Undefined,
     Object? mail = _Undefined,
     DateTime? acceptanceDate,
     Object? dismissalDate = _Undefined,
     int? positionId,
+    Object? position = _Undefined,
   }) {
     return Employee(
       id: id is int? ? id : this.id,
@@ -397,12 +418,14 @@ class _EmployeeImpl extends Employee {
       patronymic: patronymic ?? this.patronymic,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
       phoneNumber: phoneNumber ?? this.phoneNumber,
-      password: password ?? this.password,
+      password: password is String? ? password : this.password,
       mail: mail is String? ? mail : this.mail,
       acceptanceDate: acceptanceDate ?? this.acceptanceDate,
       dismissalDate:
           dismissalDate is DateTime? ? dismissalDate : this.dismissalDate,
       positionId: positionId ?? this.positionId,
+      position:
+          position is _i2.Position? ? position : this.position?.copyWith(),
     );
   }
 }
@@ -471,6 +494,21 @@ class EmployeeTable extends _i1.Table {
 
   late final _i1.ColumnInt positionId;
 
+  _i2.PositionTable? _position;
+
+  _i2.PositionTable get position {
+    if (_position != null) return _position!;
+    _position = _i1.createRelationTable(
+      relationFieldName: 'position',
+      field: Employee.t.positionId,
+      foreignField: _i2.Position.t.id,
+      tableRelation: tableRelation,
+      createTable: (foreignTableRelation) =>
+          _i2.PositionTable(tableRelation: foreignTableRelation),
+    );
+    return _position!;
+  }
+
   @override
   List<_i1.Column> get columns => [
         id,
@@ -485,16 +523,28 @@ class EmployeeTable extends _i1.Table {
         dismissalDate,
         positionId,
       ];
+
+  @override
+  _i1.Table? getRelationTable(String relationField) {
+    if (relationField == 'position') {
+      return position;
+    }
+    return null;
+  }
 }
 
 @Deprecated('Use EmployeeTable.t instead.')
 EmployeeTable tEmployee = EmployeeTable();
 
 class EmployeeInclude extends _i1.IncludeObject {
-  EmployeeInclude._();
+  EmployeeInclude._({_i2.PositionInclude? position}) {
+    _position = position;
+  }
+
+  _i2.PositionInclude? _position;
 
   @override
-  Map<String, _i1.Include?> get includes => {};
+  Map<String, _i1.Include?> get includes => {'position': _position};
 
   @override
   _i1.Table get table => Employee.t;
@@ -523,6 +573,8 @@ class EmployeeIncludeList extends _i1.IncludeList {
 class EmployeeRepository {
   const EmployeeRepository._();
 
+  final attachRow = const EmployeeAttachRowRepository._();
+
   Future<List<Employee>> find(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<EmployeeTable>? where,
@@ -532,6 +584,7 @@ class EmployeeRepository {
     bool orderDescending = false,
     _i1.OrderByListBuilder<EmployeeTable>? orderByList,
     _i1.Transaction? transaction,
+    EmployeeInclude? include,
   }) async {
     return session.dbNext.find<Employee>(
       where: where?.call(Employee.t),
@@ -541,6 +594,7 @@ class EmployeeRepository {
       limit: limit,
       offset: offset,
       transaction: transaction,
+      include: include,
     );
   }
 
@@ -552,6 +606,7 @@ class EmployeeRepository {
     bool orderDescending = false,
     _i1.OrderByListBuilder<EmployeeTable>? orderByList,
     _i1.Transaction? transaction,
+    EmployeeInclude? include,
   }) async {
     return session.dbNext.findFirstRow<Employee>(
       where: where?.call(Employee.t),
@@ -560,6 +615,7 @@ class EmployeeRepository {
       orderDescending: orderDescending,
       offset: offset,
       transaction: transaction,
+      include: include,
     );
   }
 
@@ -567,10 +623,12 @@ class EmployeeRepository {
     _i1.Session session,
     int id, {
     _i1.Transaction? transaction,
+    EmployeeInclude? include,
   }) async {
     return session.dbNext.findById<Employee>(
       id,
       transaction: transaction,
+      include: include,
     );
   }
 
@@ -665,6 +723,29 @@ class EmployeeRepository {
       where: where?.call(Employee.t),
       limit: limit,
       transaction: transaction,
+    );
+  }
+}
+
+class EmployeeAttachRowRepository {
+  const EmployeeAttachRowRepository._();
+
+  Future<void> position(
+    _i1.Session session,
+    Employee employee,
+    _i2.Position position,
+  ) async {
+    if (employee.id == null) {
+      throw ArgumentError.notNull('employee.id');
+    }
+    if (position.id == null) {
+      throw ArgumentError.notNull('position.id');
+    }
+
+    var $employee = employee.copyWith(positionId: position.id);
+    await session.dbNext.updateRow<Employee>(
+      $employee,
+      columns: [Employee.t.positionId],
     );
   }
 }

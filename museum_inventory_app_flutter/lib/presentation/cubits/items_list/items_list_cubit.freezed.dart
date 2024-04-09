@@ -16,29 +16,25 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ItemsListState {
-  List<Item> get items => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Item> items) initial,
+    required TResult Function() initial,
     required TResult Function(List<Item> items) itemsLoaded,
-    required TResult Function(List<Item> items) itemRemoved,
-    required TResult Function(List<Item> items) itemAdded,
+    required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Item> items)? initial,
+    TResult? Function()? initial,
     TResult? Function(List<Item> items)? itemsLoaded,
-    TResult? Function(List<Item> items)? itemRemoved,
-    TResult? Function(List<Item> items)? itemAdded,
+    TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Item> items)? initial,
+    TResult Function()? initial,
     TResult Function(List<Item> items)? itemsLoaded,
-    TResult Function(List<Item> items)? itemRemoved,
-    TResult Function(List<Item> items)? itemAdded,
+    TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,30 +42,23 @@ mixin _$ItemsListState {
   TResult map<TResult extends Object?>({
     required TResult Function(_ItemsListState value) initial,
     required TResult Function(_ItemsLoaded value) itemsLoaded,
-    required TResult Function(_ItemRemoved value) itemRemoved,
-    required TResult Function(_ItemAdded value) itemAdded,
+    required TResult Function(_ItemError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ItemsListState value)? initial,
     TResult? Function(_ItemsLoaded value)? itemsLoaded,
-    TResult? Function(_ItemRemoved value)? itemRemoved,
-    TResult? Function(_ItemAdded value)? itemAdded,
+    TResult? Function(_ItemError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ItemsListState value)? initial,
     TResult Function(_ItemsLoaded value)? itemsLoaded,
-    TResult Function(_ItemRemoved value)? itemRemoved,
-    TResult Function(_ItemAdded value)? itemAdded,
+    TResult Function(_ItemError value)? error,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ItemsListStateCopyWith<ItemsListState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -78,8 +67,6 @@ abstract class $ItemsListStateCopyWith<$Res> {
   factory $ItemsListStateCopyWith(
           ItemsListState value, $Res Function(ItemsListState) then) =
       _$ItemsListStateCopyWithImpl<$Res, ItemsListState>;
-  @useResult
-  $Res call({List<Item> items});
 }
 
 /// @nodoc
@@ -91,30 +78,13 @@ class _$ItemsListStateCopyWithImpl<$Res, $Val extends ItemsListState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? items = null,
-  }) {
-    return _then(_value.copyWith(
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$ItemsListStateImplCopyWith<$Res>
-    implements $ItemsListStateCopyWith<$Res> {
+abstract class _$$ItemsListStateImplCopyWith<$Res> {
   factory _$$ItemsListStateImplCopyWith(_$ItemsListStateImpl value,
           $Res Function(_$ItemsListStateImpl) then) =
       __$$ItemsListStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Item> items});
 }
 
 /// @nodoc
@@ -124,93 +94,57 @@ class __$$ItemsListStateImplCopyWithImpl<$Res>
   __$$ItemsListStateImplCopyWithImpl(
       _$ItemsListStateImpl _value, $Res Function(_$ItemsListStateImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? items = null,
-  }) {
-    return _then(_$ItemsListStateImpl(
-      items: null == items
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$ItemsListStateImpl implements _ItemsListState {
-  const _$ItemsListStateImpl({final List<Item> items = const []})
-      : _items = items;
-
-  final List<Item> _items;
-  @override
-  @JsonKey()
-  List<Item> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
+  const _$ItemsListStateImpl();
 
   @override
   String toString() {
-    return 'ItemsListState.initial(items: $items)';
+    return 'ItemsListState.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ItemsListStateImpl &&
-            const DeepCollectionEquality().equals(other._items, _items));
+        (other.runtimeType == runtimeType && other is _$ItemsListStateImpl);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ItemsListStateImplCopyWith<_$ItemsListStateImpl> get copyWith =>
-      __$$ItemsListStateImplCopyWithImpl<_$ItemsListStateImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Item> items) initial,
+    required TResult Function() initial,
     required TResult Function(List<Item> items) itemsLoaded,
-    required TResult Function(List<Item> items) itemRemoved,
-    required TResult Function(List<Item> items) itemAdded,
+    required TResult Function() error,
   }) {
-    return initial(items);
+    return initial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Item> items)? initial,
+    TResult? Function()? initial,
     TResult? Function(List<Item> items)? itemsLoaded,
-    TResult? Function(List<Item> items)? itemRemoved,
-    TResult? Function(List<Item> items)? itemAdded,
+    TResult? Function()? error,
   }) {
-    return initial?.call(items);
+    return initial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Item> items)? initial,
+    TResult Function()? initial,
     TResult Function(List<Item> items)? itemsLoaded,
-    TResult Function(List<Item> items)? itemRemoved,
-    TResult Function(List<Item> items)? itemAdded,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(items);
+      return initial();
     }
     return orElse();
   }
@@ -220,8 +154,7 @@ class _$ItemsListStateImpl implements _ItemsListState {
   TResult map<TResult extends Object?>({
     required TResult Function(_ItemsListState value) initial,
     required TResult Function(_ItemsLoaded value) itemsLoaded,
-    required TResult Function(_ItemRemoved value) itemRemoved,
-    required TResult Function(_ItemAdded value) itemAdded,
+    required TResult Function(_ItemError value) error,
   }) {
     return initial(this);
   }
@@ -231,8 +164,7 @@ class _$ItemsListStateImpl implements _ItemsListState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ItemsListState value)? initial,
     TResult? Function(_ItemsLoaded value)? itemsLoaded,
-    TResult? Function(_ItemRemoved value)? itemRemoved,
-    TResult? Function(_ItemAdded value)? itemAdded,
+    TResult? Function(_ItemError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -242,8 +174,7 @@ class _$ItemsListStateImpl implements _ItemsListState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ItemsListState value)? initial,
     TResult Function(_ItemsLoaded value)? itemsLoaded,
-    TResult Function(_ItemRemoved value)? itemRemoved,
-    TResult Function(_ItemAdded value)? itemAdded,
+    TResult Function(_ItemError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -254,24 +185,14 @@ class _$ItemsListStateImpl implements _ItemsListState {
 }
 
 abstract class _ItemsListState implements ItemsListState {
-  const factory _ItemsListState({final List<Item> items}) =
-      _$ItemsListStateImpl;
-
-  @override
-  List<Item> get items;
-  @override
-  @JsonKey(ignore: true)
-  _$$ItemsListStateImplCopyWith<_$ItemsListStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _ItemsListState() = _$ItemsListStateImpl;
 }
 
 /// @nodoc
-abstract class _$$ItemsLoadedImplCopyWith<$Res>
-    implements $ItemsListStateCopyWith<$Res> {
+abstract class _$$ItemsLoadedImplCopyWith<$Res> {
   factory _$$ItemsLoadedImplCopyWith(
           _$ItemsLoadedImpl value, $Res Function(_$ItemsLoadedImpl) then) =
       __$$ItemsLoadedImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({List<Item> items});
 }
@@ -337,10 +258,9 @@ class _$ItemsLoadedImpl implements _ItemsLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Item> items) initial,
+    required TResult Function() initial,
     required TResult Function(List<Item> items) itemsLoaded,
-    required TResult Function(List<Item> items) itemRemoved,
-    required TResult Function(List<Item> items) itemAdded,
+    required TResult Function() error,
   }) {
     return itemsLoaded(items);
   }
@@ -348,10 +268,9 @@ class _$ItemsLoadedImpl implements _ItemsLoaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Item> items)? initial,
+    TResult? Function()? initial,
     TResult? Function(List<Item> items)? itemsLoaded,
-    TResult? Function(List<Item> items)? itemRemoved,
-    TResult? Function(List<Item> items)? itemAdded,
+    TResult? Function()? error,
   }) {
     return itemsLoaded?.call(items);
   }
@@ -359,10 +278,9 @@ class _$ItemsLoadedImpl implements _ItemsLoaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Item> items)? initial,
+    TResult Function()? initial,
     TResult Function(List<Item> items)? itemsLoaded,
-    TResult Function(List<Item> items)? itemRemoved,
-    TResult Function(List<Item> items)? itemAdded,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (itemsLoaded != null) {
@@ -376,8 +294,7 @@ class _$ItemsLoadedImpl implements _ItemsLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_ItemsListState value) initial,
     required TResult Function(_ItemsLoaded value) itemsLoaded,
-    required TResult Function(_ItemRemoved value) itemRemoved,
-    required TResult Function(_ItemAdded value) itemAdded,
+    required TResult Function(_ItemError value) error,
   }) {
     return itemsLoaded(this);
   }
@@ -387,8 +304,7 @@ class _$ItemsLoadedImpl implements _ItemsLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ItemsListState value)? initial,
     TResult? Function(_ItemsLoaded value)? itemsLoaded,
-    TResult? Function(_ItemRemoved value)? itemRemoved,
-    TResult? Function(_ItemAdded value)? itemAdded,
+    TResult? Function(_ItemError value)? error,
   }) {
     return itemsLoaded?.call(this);
   }
@@ -398,8 +314,7 @@ class _$ItemsLoadedImpl implements _ItemsLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ItemsListState value)? initial,
     TResult Function(_ItemsLoaded value)? itemsLoaded,
-    TResult Function(_ItemRemoved value)? itemRemoved,
-    TResult Function(_ItemAdded value)? itemAdded,
+    TResult Function(_ItemError value)? error,
     required TResult orElse(),
   }) {
     if (itemsLoaded != null) {
@@ -413,116 +328,77 @@ abstract class _ItemsLoaded implements ItemsListState {
   const factory _ItemsLoaded({required final List<Item> items}) =
       _$ItemsLoadedImpl;
 
-  @override
   List<Item> get items;
-  @override
   @JsonKey(ignore: true)
   _$$ItemsLoadedImplCopyWith<_$ItemsLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ItemRemovedImplCopyWith<$Res>
-    implements $ItemsListStateCopyWith<$Res> {
-  factory _$$ItemRemovedImplCopyWith(
-          _$ItemRemovedImpl value, $Res Function(_$ItemRemovedImpl) then) =
-      __$$ItemRemovedImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Item> items});
+abstract class _$$ItemErrorImplCopyWith<$Res> {
+  factory _$$ItemErrorImplCopyWith(
+          _$ItemErrorImpl value, $Res Function(_$ItemErrorImpl) then) =
+      __$$ItemErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ItemRemovedImplCopyWithImpl<$Res>
-    extends _$ItemsListStateCopyWithImpl<$Res, _$ItemRemovedImpl>
-    implements _$$ItemRemovedImplCopyWith<$Res> {
-  __$$ItemRemovedImplCopyWithImpl(
-      _$ItemRemovedImpl _value, $Res Function(_$ItemRemovedImpl) _then)
+class __$$ItemErrorImplCopyWithImpl<$Res>
+    extends _$ItemsListStateCopyWithImpl<$Res, _$ItemErrorImpl>
+    implements _$$ItemErrorImplCopyWith<$Res> {
+  __$$ItemErrorImplCopyWithImpl(
+      _$ItemErrorImpl _value, $Res Function(_$ItemErrorImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? items = null,
-  }) {
-    return _then(_$ItemRemovedImpl(
-      items: null == items
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$ItemRemovedImpl implements _ItemRemoved {
-  const _$ItemRemovedImpl({required final List<Item> items}) : _items = items;
-
-  final List<Item> _items;
-  @override
-  List<Item> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
+class _$ItemErrorImpl implements _ItemError {
+  const _$ItemErrorImpl();
 
   @override
   String toString() {
-    return 'ItemsListState.itemRemoved(items: $items)';
+    return 'ItemsListState.error()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ItemRemovedImpl &&
-            const DeepCollectionEquality().equals(other._items, _items));
+        (other.runtimeType == runtimeType && other is _$ItemErrorImpl);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ItemRemovedImplCopyWith<_$ItemRemovedImpl> get copyWith =>
-      __$$ItemRemovedImplCopyWithImpl<_$ItemRemovedImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Item> items) initial,
+    required TResult Function() initial,
     required TResult Function(List<Item> items) itemsLoaded,
-    required TResult Function(List<Item> items) itemRemoved,
-    required TResult Function(List<Item> items) itemAdded,
+    required TResult Function() error,
   }) {
-    return itemRemoved(items);
+    return error();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Item> items)? initial,
+    TResult? Function()? initial,
     TResult? Function(List<Item> items)? itemsLoaded,
-    TResult? Function(List<Item> items)? itemRemoved,
-    TResult? Function(List<Item> items)? itemAdded,
+    TResult? Function()? error,
   }) {
-    return itemRemoved?.call(items);
+    return error?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Item> items)? initial,
+    TResult Function()? initial,
     TResult Function(List<Item> items)? itemsLoaded,
-    TResult Function(List<Item> items)? itemRemoved,
-    TResult Function(List<Item> items)? itemAdded,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
-    if (itemRemoved != null) {
-      return itemRemoved(items);
+    if (error != null) {
+      return error();
     }
     return orElse();
   }
@@ -532,10 +408,9 @@ class _$ItemRemovedImpl implements _ItemRemoved {
   TResult map<TResult extends Object?>({
     required TResult Function(_ItemsListState value) initial,
     required TResult Function(_ItemsLoaded value) itemsLoaded,
-    required TResult Function(_ItemRemoved value) itemRemoved,
-    required TResult Function(_ItemAdded value) itemAdded,
+    required TResult Function(_ItemError value) error,
   }) {
-    return itemRemoved(this);
+    return error(this);
   }
 
   @override
@@ -543,10 +418,9 @@ class _$ItemRemovedImpl implements _ItemRemoved {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ItemsListState value)? initial,
     TResult? Function(_ItemsLoaded value)? itemsLoaded,
-    TResult? Function(_ItemRemoved value)? itemRemoved,
-    TResult? Function(_ItemAdded value)? itemAdded,
+    TResult? Function(_ItemError value)? error,
   }) {
-    return itemRemoved?.call(this);
+    return error?.call(this);
   }
 
   @override
@@ -554,180 +428,16 @@ class _$ItemRemovedImpl implements _ItemRemoved {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ItemsListState value)? initial,
     TResult Function(_ItemsLoaded value)? itemsLoaded,
-    TResult Function(_ItemRemoved value)? itemRemoved,
-    TResult Function(_ItemAdded value)? itemAdded,
+    TResult Function(_ItemError value)? error,
     required TResult orElse(),
   }) {
-    if (itemRemoved != null) {
-      return itemRemoved(this);
+    if (error != null) {
+      return error(this);
     }
     return orElse();
   }
 }
 
-abstract class _ItemRemoved implements ItemsListState {
-  const factory _ItemRemoved({required final List<Item> items}) =
-      _$ItemRemovedImpl;
-
-  @override
-  List<Item> get items;
-  @override
-  @JsonKey(ignore: true)
-  _$$ItemRemovedImplCopyWith<_$ItemRemovedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ItemAddedImplCopyWith<$Res>
-    implements $ItemsListStateCopyWith<$Res> {
-  factory _$$ItemAddedImplCopyWith(
-          _$ItemAddedImpl value, $Res Function(_$ItemAddedImpl) then) =
-      __$$ItemAddedImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Item> items});
-}
-
-/// @nodoc
-class __$$ItemAddedImplCopyWithImpl<$Res>
-    extends _$ItemsListStateCopyWithImpl<$Res, _$ItemAddedImpl>
-    implements _$$ItemAddedImplCopyWith<$Res> {
-  __$$ItemAddedImplCopyWithImpl(
-      _$ItemAddedImpl _value, $Res Function(_$ItemAddedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? items = null,
-  }) {
-    return _then(_$ItemAddedImpl(
-      items: null == items
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ItemAddedImpl implements _ItemAdded {
-  const _$ItemAddedImpl({required final List<Item> items}) : _items = items;
-
-  final List<Item> _items;
-  @override
-  List<Item> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
-
-  @override
-  String toString() {
-    return 'ItemsListState.itemAdded(items: $items)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ItemAddedImpl &&
-            const DeepCollectionEquality().equals(other._items, _items));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ItemAddedImplCopyWith<_$ItemAddedImpl> get copyWith =>
-      __$$ItemAddedImplCopyWithImpl<_$ItemAddedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<Item> items) initial,
-    required TResult Function(List<Item> items) itemsLoaded,
-    required TResult Function(List<Item> items) itemRemoved,
-    required TResult Function(List<Item> items) itemAdded,
-  }) {
-    return itemAdded(items);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Item> items)? initial,
-    TResult? Function(List<Item> items)? itemsLoaded,
-    TResult? Function(List<Item> items)? itemRemoved,
-    TResult? Function(List<Item> items)? itemAdded,
-  }) {
-    return itemAdded?.call(items);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Item> items)? initial,
-    TResult Function(List<Item> items)? itemsLoaded,
-    TResult Function(List<Item> items)? itemRemoved,
-    TResult Function(List<Item> items)? itemAdded,
-    required TResult orElse(),
-  }) {
-    if (itemAdded != null) {
-      return itemAdded(items);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ItemsListState value) initial,
-    required TResult Function(_ItemsLoaded value) itemsLoaded,
-    required TResult Function(_ItemRemoved value) itemRemoved,
-    required TResult Function(_ItemAdded value) itemAdded,
-  }) {
-    return itemAdded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ItemsListState value)? initial,
-    TResult? Function(_ItemsLoaded value)? itemsLoaded,
-    TResult? Function(_ItemRemoved value)? itemRemoved,
-    TResult? Function(_ItemAdded value)? itemAdded,
-  }) {
-    return itemAdded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ItemsListState value)? initial,
-    TResult Function(_ItemsLoaded value)? itemsLoaded,
-    TResult Function(_ItemRemoved value)? itemRemoved,
-    TResult Function(_ItemAdded value)? itemAdded,
-    required TResult orElse(),
-  }) {
-    if (itemAdded != null) {
-      return itemAdded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ItemAdded implements ItemsListState {
-  const factory _ItemAdded({required final List<Item> items}) = _$ItemAddedImpl;
-
-  @override
-  List<Item> get items;
-  @override
-  @JsonKey(ignore: true)
-  _$$ItemAddedImplCopyWith<_$ItemAddedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _ItemError implements ItemsListState {
+  const factory _ItemError() = _$ItemErrorImpl;
 }

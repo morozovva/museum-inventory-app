@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../cubits/items_list/items_list_cubit.dart';
+import 'package:museum_inventory_app_flutter/presentation/cubits/employee_list/employee_list_cubit.dart';
+import 'package:museum_inventory_app_flutter/presentation/screens/employee/employee_list_tile.dart';
 import '../common/state_screens/error_screen.dart';
 import '../common/state_screens/loading_screen.dart';
-import 'item_card.dart';
-import 'item_list_tile.dart';
-import '../common/show_card_dialog.dart';
+import 'employee_screen.dart';
 
-class ItemsListView extends StatelessWidget {
-  const ItemsListView({super.key});
+class EmployeesListView extends StatelessWidget {
+  const EmployeesListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +21,12 @@ class ItemsListView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Предметы",
+                  "Сотрудники",
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
                 IconButton(
                   onPressed: () {
-                    showCardDialog(
-                        context,
-                        const ItemCard(
-                          item: null,
-                        ));
+                    Navigator.pushNamed(context, EmployeeScreen.routeName);
                   },
                   icon: const Icon(
                     Icons.add_circle_outline,
@@ -45,17 +39,17 @@ class ItemsListView extends StatelessWidget {
               height: 32,
             ),
             Expanded(
-              child: BlocBuilder<ItemsListCubit, ItemsListState>(
+              child: BlocBuilder<EmployeeListCubit, EmployeeListState>(
                 builder: (context, state) {
                   return state.maybeWhen(
-                    itemsLoaded: (items) {
-                      final itemList = items.reversed.toList();
+                    employeesLoaded: (employees) {
+                      final employeeList = employees.reversed.toList();
                       return ListView.builder(
-                        itemCount: itemList.length,
+                        itemCount: employeeList.length,
                         padding: const EdgeInsets.only(bottom: 8),
                         itemBuilder: (context, index) {
-                          return ItemListTile(
-                            item: itemList[index],
+                          return EmployeeListTile(
+                            employee: employeeList[index],
                           );
                         },
                       );

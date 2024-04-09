@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
+import 'protocol.dart' as _i2;
 
 abstract class Employee extends _i1.SerializableEntity {
   Employee._({
@@ -18,11 +19,12 @@ abstract class Employee extends _i1.SerializableEntity {
     required this.patronymic,
     required this.dateOfBirth,
     required this.phoneNumber,
-    required this.password,
+    this.password,
     this.mail,
     required this.acceptanceDate,
     this.dismissalDate,
     required this.positionId,
+    this.position,
   });
 
   factory Employee({
@@ -32,11 +34,12 @@ abstract class Employee extends _i1.SerializableEntity {
     required String patronymic,
     required DateTime dateOfBirth,
     required String phoneNumber,
-    required String password,
+    String? password,
     String? mail,
     required DateTime acceptanceDate,
     DateTime? dismissalDate,
     required int positionId,
+    _i2.Position? position,
   }) = _EmployeeImpl;
 
   factory Employee.fromJson(
@@ -55,7 +58,7 @@ abstract class Employee extends _i1.SerializableEntity {
       phoneNumber: serializationManager
           .deserialize<String>(jsonSerialization['phoneNumber']),
       password: serializationManager
-          .deserialize<String>(jsonSerialization['password']),
+          .deserialize<String?>(jsonSerialization['password']),
       mail:
           serializationManager.deserialize<String?>(jsonSerialization['mail']),
       acceptanceDate: serializationManager
@@ -64,6 +67,8 @@ abstract class Employee extends _i1.SerializableEntity {
           .deserialize<DateTime?>(jsonSerialization['dismissalDate']),
       positionId: serializationManager
           .deserialize<int>(jsonSerialization['positionId']),
+      position: serializationManager
+          .deserialize<_i2.Position?>(jsonSerialization['position']),
     );
   }
 
@@ -82,7 +87,7 @@ abstract class Employee extends _i1.SerializableEntity {
 
   String phoneNumber;
 
-  String password;
+  String? password;
 
   String? mail;
 
@@ -91,6 +96,8 @@ abstract class Employee extends _i1.SerializableEntity {
   DateTime? dismissalDate;
 
   int positionId;
+
+  _i2.Position? position;
 
   Employee copyWith({
     int? id,
@@ -104,6 +111,7 @@ abstract class Employee extends _i1.SerializableEntity {
     DateTime? acceptanceDate,
     DateTime? dismissalDate,
     int? positionId,
+    _i2.Position? position,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -114,11 +122,12 @@ abstract class Employee extends _i1.SerializableEntity {
       'patronymic': patronymic,
       'dateOfBirth': dateOfBirth.toJson(),
       'phoneNumber': phoneNumber,
-      'password': password,
+      if (password != null) 'password': password,
       if (mail != null) 'mail': mail,
       'acceptanceDate': acceptanceDate.toJson(),
       if (dismissalDate != null) 'dismissalDate': dismissalDate?.toJson(),
       'positionId': positionId,
+      if (position != null) 'position': position?.toJson(),
     };
   }
 }
@@ -133,11 +142,12 @@ class _EmployeeImpl extends Employee {
     required String patronymic,
     required DateTime dateOfBirth,
     required String phoneNumber,
-    required String password,
+    String? password,
     String? mail,
     required DateTime acceptanceDate,
     DateTime? dismissalDate,
     required int positionId,
+    _i2.Position? position,
   }) : super._(
           id: id,
           name: name,
@@ -150,6 +160,7 @@ class _EmployeeImpl extends Employee {
           acceptanceDate: acceptanceDate,
           dismissalDate: dismissalDate,
           positionId: positionId,
+          position: position,
         );
 
   @override
@@ -160,11 +171,12 @@ class _EmployeeImpl extends Employee {
     String? patronymic,
     DateTime? dateOfBirth,
     String? phoneNumber,
-    String? password,
+    Object? password = _Undefined,
     Object? mail = _Undefined,
     DateTime? acceptanceDate,
     Object? dismissalDate = _Undefined,
     int? positionId,
+    Object? position = _Undefined,
   }) {
     return Employee(
       id: id is int? ? id : this.id,
@@ -173,12 +185,14 @@ class _EmployeeImpl extends Employee {
       patronymic: patronymic ?? this.patronymic,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
       phoneNumber: phoneNumber ?? this.phoneNumber,
-      password: password ?? this.password,
+      password: password is String? ? password : this.password,
       mail: mail is String? ? mail : this.mail,
       acceptanceDate: acceptanceDate ?? this.acceptanceDate,
       dismissalDate:
           dismissalDate is DateTime? ? dismissalDate : this.dismissalDate,
       positionId: positionId ?? this.positionId,
+      position:
+          position is _i2.Position? ? position : this.position?.copyWith(),
     );
   }
 }

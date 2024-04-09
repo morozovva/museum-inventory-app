@@ -33,7 +33,11 @@ import 'position.dart' as _i21;
 import 'protocol_efzk.dart' as _i22;
 import 'return_act.dart' as _i23;
 import 'speaking_employee_efzk.dart' as _i24;
-import 'package:museum_inventory_app_client/src/protocol/item.dart' as _i25;
+import 'package:museum_inventory_app_client/src/protocol/employee.dart' as _i25;
+import 'package:museum_inventory_app_client/src/protocol/item.dart' as _i26;
+import 'package:museum_inventory_app_client/src/protocol/owners_application.dart'
+    as _i27;
+import 'package:museum_inventory_app_client/src/protocol/owner.dart' as _i28;
 export 'act_vh_efzk.dart';
 export 'decomission_act.dart';
 export 'decomission_order.dart';
@@ -233,8 +237,21 @@ class Protocol extends _i1.SerializationManager {
           ? _i24.SpeakingEmployeeEfzk.fromJson(data, this)
           : null) as T;
     }
-    if (t == List<_i25.Item>) {
-      return (data as List).map((e) => deserialize<_i25.Item>(e)).toList()
+    if (t == List<_i25.Employee>) {
+      return (data as List).map((e) => deserialize<_i25.Employee>(e)).toList()
+          as dynamic;
+    }
+    if (t == List<_i26.Item>) {
+      return (data as List).map((e) => deserialize<_i26.Item>(e)).toList()
+          as dynamic;
+    }
+    if (t == List<_i27.OwnersApplication>) {
+      return (data as List)
+          .map((e) => deserialize<_i27.OwnersApplication>(e))
+          .toList() as dynamic;
+    }
+    if (t == List<_i28.Owner>) {
+      return (data as List).map((e) => deserialize<_i28.Owner>(e)).toList()
           as dynamic;
     }
     return super.deserialize<T>(data, t);

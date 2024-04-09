@@ -1,7 +1,32 @@
+employee:
+  - getAllEmployees:
+  - getEmployee:
+  - createEmployee:
+  - updateEmployee:
+  - deleteEmployee:
 example:
   - hello:
+fileManagement:
+  - getUploadDescription:
+  - verifyUpload:
+  - deleteFile:
+  - checkIfFileExists:
+  - getFileUrl:
 items:
   - getAllItems:
+  - getItem:
   - createItem:
   - updateItem:
   - deleteItem:
+ownersApplication:
+  - getAllOwnersApplications:
+  - getOwnersApplication:
+  - createOwnersApplication:
+  - updateOwnersApplication:
+  - deleteOwnersApplication:
+owners:
+  - getAllOwners:
+  - getOwner:
+  - createOwner:
+  - updateOwner:
+  - deleteOwner:

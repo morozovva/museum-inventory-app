@@ -1,0 +1,1667 @@
+{
+  "moduleName": "museum_inventory_app",
+  "tables": [
+    {
+      "name": "act_vh_efzk",
+      "dartName": "ActVHEFZK",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('act_vh_efzk_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "date",
+          "columnType": 4,
+          "isNullable": false,
+          "dartType": "DateTime"
+        },
+        {
+          "name": "note",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "employeeId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        },
+        {
+          "name": "signed",
+          "columnType": 1,
+          "isNullable": false,
+          "dartType": "bool"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "act_vh_efzk_fk_0",
+          "columns": [
+            "employeeId"
+          ],
+          "referenceTable": "employee",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "act_vh_efzk_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "decomission_act",
+      "dartName": "DecomissionAct",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('decomission_act_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "date",
+          "columnType": 4,
+          "isNullable": false,
+          "dartType": "DateTime"
+        },
+        {
+          "name": "basis",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "orderId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        },
+        {
+          "name": "integrity",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "employeeId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "decomission_act_fk_0",
+          "columns": [
+            "orderId"
+          ],
+          "referenceTable": "decomission_order",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        },
+        {
+          "constraintName": "decomission_act_fk_1",
+          "columns": [
+            "employeeId"
+          ],
+          "referenceTable": "employee",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "decomission_act_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "decomission_order",
+      "dartName": "DecomissionOrder",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('decomission_order_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "file",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        }
+      ],
+      "foreignKeys": [],
+      "indexes": [
+        {
+          "indexName": "decomission_order_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "employee",
+      "dartName": "Employee",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('employee_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "name",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "surname",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "patronymic",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "dateOfBirth",
+          "columnType": 4,
+          "isNullable": false,
+          "dartType": "DateTime"
+        },
+        {
+          "name": "phoneNumber",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "password",
+          "columnType": 0,
+          "isNullable": true,
+          "dartType": "String?"
+        },
+        {
+          "name": "mail",
+          "columnType": 0,
+          "isNullable": true,
+          "dartType": "String?"
+        },
+        {
+          "name": "acceptanceDate",
+          "columnType": 4,
+          "isNullable": false,
+          "dartType": "DateTime"
+        },
+        {
+          "name": "dismissalDate",
+          "columnType": 4,
+          "isNullable": true,
+          "dartType": "DateTime?"
+        },
+        {
+          "name": "positionId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "employee_fk_0",
+          "columns": [
+            "positionId"
+          ],
+          "referenceTable": "position",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "employee_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "entrance_book",
+      "dartName": "EntranceBook",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('entrance_book_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "recordId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "entrance_book_fk_0",
+          "columns": [
+            "recordId"
+          ],
+          "referenceTable": "entrance_book_record",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "entrance_book_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "entrance_book_record",
+      "dartName": "EntranceBookRecord",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('entrance_book_record_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "date",
+          "columnType": 4,
+          "isNullable": false,
+          "dartType": "DateTime"
+        },
+        {
+          "name": "admissionWay",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "name",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "shortDescription",
+          "columnType": 0,
+          "isNullable": true,
+          "dartType": "String?"
+        },
+        {
+          "name": "numberOfItems",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        },
+        {
+          "name": "material",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "fundCollectionId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        },
+        {
+          "name": "integrity",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "note",
+          "columnType": 0,
+          "isNullable": true,
+          "dartType": "String?"
+        },
+        {
+          "name": "location",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "entrance_book_record_fk_0",
+          "columns": [
+            "fundCollectionId"
+          ],
+          "referenceTable": "fund_collection",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "entrance_book_record_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "expertise",
+      "dartName": "Expertise",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('expertise_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "file",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        }
+      ],
+      "foreignKeys": [],
+      "indexes": [
+        {
+          "indexName": "expertise_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "expertise_of_item",
+      "dartName": "ExpertiseOfItem",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('expertise_of_item_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "itemId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        },
+        {
+          "name": "expertiseId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "expertise_of_item_fk_0",
+          "columns": [
+            "itemId"
+          ],
+          "referenceTable": "item",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        },
+        {
+          "constraintName": "expertise_of_item_fk_1",
+          "columns": [
+            "expertiseId"
+          ],
+          "referenceTable": "expertise",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "expertise_of_item_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "fund",
+      "dartName": "Fund",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('fund_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "fundCollectionId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        },
+        {
+          "name": "shortName",
+          "columnType": 0,
+          "isNullable": true,
+          "dartType": "String?"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "fund_fk_0",
+          "columns": [
+            "fundCollectionId"
+          ],
+          "referenceTable": "fund_collection",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "fund_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "fund_collection",
+      "dartName": "FundCollection",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('fund_collection_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "name",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "shortName",
+          "columnType": 0,
+          "isNullable": true,
+          "dartType": "String?"
+        }
+      ],
+      "foreignKeys": [],
+      "indexes": [
+        {
+          "indexName": "fund_collection_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "inventory_book",
+      "dartName": "InventoryBook",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('inventory_book_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "recordId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "inventory_book_fk_0",
+          "columns": [
+            "recordId"
+          ],
+          "referenceTable": "inventory_book_record",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "inventory_book_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "inventory_book_record",
+      "dartName": "InventoryBookRecord",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('inventory_book_record_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "date",
+          "columnType": 4,
+          "isNullable": false,
+          "dartType": "DateTime"
+        },
+        {
+          "name": "name",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "longDescription",
+          "columnType": 0,
+          "isNullable": true,
+          "dartType": "String?"
+        },
+        {
+          "name": "origin",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "history",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "material",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "technique",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "size",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "weight",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "integrity",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "admissionWay",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "note",
+          "columnType": 0,
+          "isNullable": true,
+          "dartType": "String?"
+        },
+        {
+          "name": "signed",
+          "columnType": 1,
+          "isNullable": false,
+          "dartType": "bool"
+        }
+      ],
+      "foreignKeys": [],
+      "indexes": [
+        {
+          "indexName": "inventory_book_record_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "item",
+      "dartName": "Item",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('item_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "name",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "integrity",
+          "columnType": 0,
+          "isNullable": true,
+          "dartType": "String?"
+        },
+        {
+          "name": "appearance",
+          "columnType": 0,
+          "isNullable": true,
+          "dartType": "String?"
+        },
+        {
+          "name": "origin",
+          "columnType": 0,
+          "isNullable": true,
+          "dartType": "String?"
+        },
+        {
+          "name": "ownerApplicationId",
+          "columnType": 2,
+          "isNullable": true,
+          "dartType": "int?"
+        },
+        {
+          "name": "actVhEfzkId",
+          "columnType": 2,
+          "isNullable": true,
+          "dartType": "int?"
+        },
+        {
+          "name": "returnActId",
+          "columnType": 2,
+          "isNullable": true,
+          "dartType": "int?"
+        },
+        {
+          "name": "permanentAcceptanceActId",
+          "columnType": 2,
+          "isNullable": true,
+          "dartType": "int?"
+        },
+        {
+          "name": "decomissionActId",
+          "columnType": 2,
+          "isNullable": true,
+          "dartType": "int?"
+        },
+        {
+          "name": "entranceBookRecordId",
+          "columnType": 2,
+          "isNullable": true,
+          "dartType": "int?"
+        },
+        {
+          "name": "inventoryBookRecordId",
+          "columnType": 2,
+          "isNullable": true,
+          "dartType": "int?"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "item_fk_0",
+          "columns": [
+            "ownerApplicationId"
+          ],
+          "referenceTable": "owners_application",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        },
+        {
+          "constraintName": "item_fk_1",
+          "columns": [
+            "actVhEfzkId"
+          ],
+          "referenceTable": "act_vh_efzk",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        },
+        {
+          "constraintName": "item_fk_2",
+          "columns": [
+            "returnActId"
+          ],
+          "referenceTable": "return_act",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        },
+        {
+          "constraintName": "item_fk_3",
+          "columns": [
+            "permanentAcceptanceActId"
+          ],
+          "referenceTable": "permanent_acceptance_act",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        },
+        {
+          "constraintName": "item_fk_4",
+          "columns": [
+            "decomissionActId"
+          ],
+          "referenceTable": "decomission_act",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        },
+        {
+          "constraintName": "item_fk_5",
+          "columns": [
+            "entranceBookRecordId"
+          ],
+          "referenceTable": "entrance_book_record",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        },
+        {
+          "constraintName": "item_fk_6",
+          "columns": [
+            "inventoryBookRecordId"
+          ],
+          "referenceTable": "inventory_book_record",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "item_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "item_in_efzk_protocol",
+      "dartName": "ItemInEfzkProtocol",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('item_in_efzk_protocol_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "itemOnEfzkId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        },
+        {
+          "name": "protocolId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "item_in_efzk_protocol_fk_0",
+          "columns": [
+            "itemOnEfzkId"
+          ],
+          "referenceTable": "item_on_efzk",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        },
+        {
+          "constraintName": "item_in_efzk_protocol_fk_1",
+          "columns": [
+            "protocolId"
+          ],
+          "referenceTable": "protocol_efzk",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "item_in_efzk_protocol_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "item_on_efzk",
+      "dartName": "ItemOnEfzk",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('item_on_efzk_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "itemId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        },
+        {
+          "name": "shortDesc",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "integrity",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "decision",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "fundCollectionId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "item_on_efzk_fk_0",
+          "columns": [
+            "itemId"
+          ],
+          "referenceTable": "item",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        },
+        {
+          "constraintName": "item_on_efzk_fk_1",
+          "columns": [
+            "fundCollectionId"
+          ],
+          "referenceTable": "fund_collection",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "item_on_efzk_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "listening_employee_efzk",
+      "dartName": "ListeningEmployeeEfzk",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('listening_employee_efzk_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "protocolId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        },
+        {
+          "name": "employeeId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "listening_employee_efzk_fk_0",
+          "columns": [
+            "protocolId"
+          ],
+          "referenceTable": "protocol_efzk",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        },
+        {
+          "constraintName": "listening_employee_efzk_fk_1",
+          "columns": [
+            "employeeId"
+          ],
+          "referenceTable": "employee",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "listening_employee_efzk_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "owner",
+      "dartName": "Owner",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('owner_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "fio",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "phoneNumber",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "mail",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "dateOfBirth",
+          "columnType": 4,
+          "isNullable": false,
+          "dartType": "DateTime"
+        },
+        {
+          "name": "homeAddress",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        }
+      ],
+      "foreignKeys": [],
+      "indexes": [
+        {
+          "indexName": "owner_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "owners_application",
+      "dartName": "OwnersApplication",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('owners_application_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "file",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "ownerId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "owners_application_fk_0",
+          "columns": [
+            "ownerId"
+          ],
+          "referenceTable": "owner",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "owners_application_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "permanent_acceptance_act",
+      "dartName": "PermanentAcceptanceAct",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('permanent_acceptance_act_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "date",
+          "columnType": 4,
+          "isNullable": false,
+          "dartType": "DateTime"
+        },
+        {
+          "name": "acceptanceBasis",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "employeeId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        },
+        {
+          "name": "signed",
+          "columnType": 1,
+          "isNullable": false,
+          "dartType": "bool"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "permanent_acceptance_act_fk_0",
+          "columns": [
+            "employeeId"
+          ],
+          "referenceTable": "employee",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "permanent_acceptance_act_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "position",
+      "dartName": "Position",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('position_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "name",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        }
+      ],
+      "foreignKeys": [],
+      "indexes": [
+        {
+          "indexName": "position_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "protocol_efzk",
+      "dartName": "ProtocolEFZK",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('protocol_efzk_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "date",
+          "columnType": 4,
+          "isNullable": false,
+          "dartType": "DateTime"
+        },
+        {
+          "name": "discussion",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "conclusion",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        }
+      ],
+      "foreignKeys": [],
+      "indexes": [
+        {
+          "indexName": "protocol_efzk_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "return_act",
+      "dartName": "ReturnAct",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('return_act_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "date",
+          "columnType": 4,
+          "isNullable": false,
+          "dartType": "DateTime"
+        },
+        {
+          "name": "returnBasis",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        },
+        {
+          "name": "employeeId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        },
+        {
+          "name": "integrity",
+          "columnType": 0,
+          "isNullable": false,
+          "dartType": "String"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "return_act_fk_0",
+          "columns": [
+            "employeeId"
+          ],
+          "referenceTable": "employee",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "return_act_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    },
+    {
+      "name": "speaking_employee_efzk",
+      "dartName": "SpeakingEmployeeEfzk",
+      "module": "museum_inventory_app",
+      "schema": "public",
+      "columns": [
+        {
+          "name": "id",
+          "columnType": 2,
+          "isNullable": false,
+          "columnDefault": "nextval('speaking_employee_efzk_id_seq'::regclass)",
+          "dartType": "int?"
+        },
+        {
+          "name": "employeeId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        },
+        {
+          "name": "protocolId",
+          "columnType": 2,
+          "isNullable": false,
+          "dartType": "int"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "constraintName": "speaking_employee_efzk_fk_0",
+          "columns": [
+            "employeeId"
+          ],
+          "referenceTable": "employee",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        },
+        {
+          "constraintName": "speaking_employee_efzk_fk_1",
+          "columns": [
+            "protocolId"
+          ],
+          "referenceTable": "protocol_efzk",
+          "referenceTableSchema": "public",
+          "referenceColumns": [
+            "id"
+          ],
+          "onUpdate": 3,
+          "onDelete": 3
+        }
+      ],
+      "indexes": [
+        {
+          "indexName": "speaking_employee_efzk_pkey",
+          "elements": [
+            {
+              "type": 0,
+              "definition": "id"
+            }
+          ],
+          "type": "btree",
+          "isUnique": true,
+          "isPrimary": true
+        }
+      ],
+      "managed": true
+    }
+  ],
+  "installedModules": [
+    {
+      "module": "serverpod",
+      "version": "20240115074235544"
+    },
+    {
+      "module": "museum_inventory_app",
+      "version": "20240407202345281"
+    }
+  ],
+  "migrationApiVersion": 1
+}

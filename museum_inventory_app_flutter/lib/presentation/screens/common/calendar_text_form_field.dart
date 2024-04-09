@@ -58,6 +58,12 @@ class CalendarTextFormField extends StatelessWidget {
           ),
         ),
       ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Заполните поле';
+        }
+        return null;
+      },
       controller: controller,
     );
   }

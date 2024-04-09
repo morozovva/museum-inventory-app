@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:museum_inventory_app_client/museum_inventory_app_client.dart';
-
+import 'package:intl/intl.dart';
 import '../../../../core/themes.dart';
+import '../../cubits/owners_list/owners_list_cubit.dart';
 import '../common/calendar_text_form_field.dart';
 import '../common/card_heading.dart';
 
@@ -32,7 +33,8 @@ class _ItemCardState extends State<OwnerCard> {
       _fioController.text = widget.owner!.fio;
       _phoneController.text = widget.owner!.phoneNumber;
       _mailController.text = widget.owner!.mail;
-      _dateOfBirthController.text = widget.owner!.dateOfBirth.toIso8601String();
+      _dateOfBirthController.text =
+          DateFormat('dd.MM.yyyy').format(widget.owner!.dateOfBirth.toLocal());
       _addressController.text = widget.owner!.homeAddress;
     }
     super.initState();
@@ -102,8 +104,9 @@ class _ItemCardState extends State<OwnerCard> {
                       height: 16,
                     ),
                     CalendarTextFormField(
-                        controller: _dateOfBirthController,
-                        text: "Дата рождения"),
+                      controller: _dateOfBirthController,
+                      text: "Дата рождения",
+                    ),
                     const SizedBox(
                       height: 16,
                     ),
@@ -111,6 +114,12 @@ class _ItemCardState extends State<OwnerCard> {
                       controller: _addressController,
                       decoration: Themes()
                           .normalTextInputDecoration("Адрес проживания"),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Заполните поле';
+                        }
+                        return null;
+                      },
                     ),
                   ],
                 ),
@@ -123,14 +132,17 @@ class _ItemCardState extends State<OwnerCard> {
               if (!_formKey.currentState!.validate()) {
                 return;
               }
-              // context.read<OwnersListCubit>().addOrUpdateOwner(
-              //       widget.owner?.id,
-              //       _fioController.text,
-              //       _phoneController.text,
-              //       _mailController.text,
-              //       _dateOfBirthController.text,
-              //       _addressController.text,
-              //     );
+              final owner = Owner(
+                id: widget.owner?.id,
+                fio: _fioController.text,
+                phoneNumber: _phoneController.text,
+                mail: _mailController.text,
+                dateOfBirth: DateFormat('dd.MM.yyyy')
+                    .parseStrict(_dateOfBirthController.text)
+                    .toLocal(),
+                homeAddress: _addressController.text,
+              );
+              context.read<OwnersListCubit>().addOrUpdateOwner(owner);
               Navigator.pop(context);
             },
             style: Themes().writeSmallButtonStyle(context),

@@ -1,11 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:museum_inventory_app_client/museum_inventory_app_client.dart';
 import 'package:flutter/material.dart';
+import 'package:museum_inventory_app_flutter/presentation/cubits/employee_list/employee_list_cubit.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 
 import 'core/themes.dart';
 import 'presentation/cubits/items_list/items_list_cubit.dart';
 import 'presentation/cubits/main_view/main_view_cubit_cubit.dart';
+import 'presentation/cubits/owners_application_list/owners_application_list_cubit.dart';
+import 'presentation/cubits/owners_list/owners_list_cubit.dart';
+import 'presentation/screens/employee/employee_screen.dart';
 import 'presentation/screens/login_screen.dart';
 import 'presentation/screens/main_screen.dart';
 
@@ -34,9 +38,15 @@ class MyApp extends StatelessWidget {
         BlocProvider<ItemsListCubit>(
           create: (context) => ItemsListCubit(),
         ),
-        // BlocProvider<OwnersListCubit>(
-        //   create: (context) => OwnersListCubit(),
-        // ),
+        BlocProvider<EmployeeListCubit>(
+          create: (context) => EmployeeListCubit(),
+        ),
+        BlocProvider<OwnersListCubit>(
+          create: (context) => OwnersListCubit(),
+        ),
+        BlocProvider<OwnersApplicationListCubit>(
+          create: (context) => OwnersApplicationListCubit(),
+        ),
       ],
       child: MaterialApp(
         title: 'Museum Inventory',
@@ -46,7 +56,7 @@ class MyApp extends StatelessWidget {
         routes: {
           LoginScreen.routeName: (context) => const LoginScreen(),
           MainScreen.routeName: (context) => const MainScreen(),
-          // EmployeeScreen.routeName: (context) => const EmployeeScreen(),
+          EmployeeScreen.routeName: (context) => const EmployeeScreen(),
         },
       ),
     );
