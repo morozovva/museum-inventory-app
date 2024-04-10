@@ -1,0 +1,98 @@
+{
+  "actions": [
+    {
+      "type": "deleteTable",
+      "deleteTable": "act_vh_efzk"
+    },
+    {
+      "type": "createTable",
+      "createTable": {
+        "name": "act_vh_efzk",
+        "dartName": "ActVHEFZK",
+        "module": "museum_inventory_app",
+        "schema": "public",
+        "columns": [
+          {
+            "name": "id",
+            "columnType": 2,
+            "isNullable": false,
+            "columnDefault": "nextval('act_vh_efzk_id_seq'::regclass)",
+            "dartType": "int?"
+          },
+          {
+            "name": "date",
+            "columnType": 4,
+            "isNullable": false,
+            "dartType": "DateTime"
+          },
+          {
+            "name": "basis",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "note",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "employeeId",
+            "columnType": 2,
+            "isNullable": false,
+            "dartType": "int"
+          },
+          {
+            "name": "signed",
+            "columnType": 1,
+            "isNullable": false,
+            "dartType": "bool"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "constraintName": "act_vh_efzk_fk_0",
+            "columns": [
+              "employeeId"
+            ],
+            "referenceTable": "employee",
+            "referenceTableSchema": "public",
+            "referenceColumns": [
+              "id"
+            ],
+            "onUpdate": 3,
+            "onDelete": 3
+          }
+        ],
+        "indexes": [
+          {
+            "indexName": "act_vh_efzk_pkey",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "id"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": true
+          }
+        ],
+        "managed": true
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "type": "tableDropped",
+      "message": "One or more columns are added to table \"act_vh_efzk\" which cannot be added in a table migration. The complete table will be deleted and recreated.",
+      "table": "act_vh_efzk",
+      "columns": [
+        "basis"
+      ],
+      "destrucive": true
+    }
+  ],
+  "migrationApiVersion": 1
+}

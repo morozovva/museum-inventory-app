@@ -7,6 +7,7 @@ import 'package:museum_inventory_app_client/museum_inventory_app_client.dart';
 import '../../../core/themes.dart';
 import '../../../main.dart';
 
+// ignore: must_be_immutable
 class FileUploadFormField extends StatelessWidget {
   FileUploadFormField({
     super.key,

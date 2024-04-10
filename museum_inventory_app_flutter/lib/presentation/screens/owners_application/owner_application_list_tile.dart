@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:museum_inventory_app_client/museum_inventory_app_client.dart';
+import 'package:museum_inventory_app_flutter/presentation/screens/owners_application/owners_application_card.dart';
 
 import '../../../../core/colors.dart';
 import '../../cubits/owners_list/owners_list_cubit.dart';
+import '../common/show_card_dialog.dart';
 
 class OwnersApplicationListTile extends StatelessWidget {
   const OwnersApplicationListTile({
@@ -32,12 +34,12 @@ class OwnersApplicationListTile extends StatelessWidget {
           },
           icon: const Icon(Icons.delete_outline_outlined)),
       onTap: () {
-        // showCardDialog(
-        //   context,
-        //   OwnerCard(
-        //     owner: ownersApplication,
-        //   ),
-        // );
+        showCardDialog(
+          context,
+          OwnersApplicationCard(
+            ownersApplication: ownersApplication,
+          ),
+        );
       },
     );
   }

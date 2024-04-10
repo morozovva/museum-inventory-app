@@ -82,6 +82,7 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         TextFormField(
+                          readOnly: true,
                           controller: _nameController,
                           decoration: Themes().normalTextInputDecoration("Имя"),
                           validator: (value) {
@@ -95,6 +96,7 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                           height: 24,
                         ),
                         TextFormField(
+                          readOnly: true,
                           controller: _surnameController,
                           decoration:
                               Themes().normalTextInputDecoration("Фамилия"),
@@ -103,6 +105,7 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                           height: 24,
                         ),
                         TextFormField(
+                          readOnly: true,
                           controller: _patronymicController,
                           decoration:
                               Themes().normalTextInputDecoration("Отчество"),
@@ -131,6 +134,7 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                           height: 24,
                         ),
                         TextFormField(
+                          readOnly: true,
                           controller: _mailController,
                           decoration: Themes()
                               .normalTextInputDecoration("Электронная почта"),
@@ -139,6 +143,7 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                           height: 24,
                         ),
                         TextFormField(
+                          readOnly: true,
                           controller: _phoneController,
                           decoration: Themes()
                               .normalTextInputDecoration("Номер телефона"),
@@ -146,28 +151,32 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                         const SizedBox(
                           height: 40,
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Employee employee = Employee(
-                              name: _nameController.text,
-                              surname: _surnameController.text,
-                              patronymic: _patronymicController.text,
-                              dateOfBirth: DateFormat('dd.MM.yyyy')
-                                  .parse(_dateOfBirthController.text),
-                              mail: _mailController.text,
-                              phoneNumber: _phoneController.text,
-                              id: widget.employee?.id,
-                              acceptanceDate: DateTime.now(),
-                              positionId: 1,
-                            );
-                            context
-                                .read<EmployeeListCubit>()
-                                .addOrUpdateEmployee(employee);
-                            Navigator.pop(context);
-                          },
-                          style: Themes().writeButtonStyle(context),
-                          child: const Text("Записать"),
-                        ),
+                        // ElevatedButton(
+                        //   onPressed: () {
+                        //     Employee employee = Employee(
+                        //       name: _nameController.text,
+                        //       surname: _surnameController.text,
+                        //       patronymic: _patronymicController.text,
+                        //       dateOfBirth: DateFormat('dd.MM.yyyy')
+                        //           .parse(_dateOfBirthController.text),
+                        //       mail: _mailController.text,
+                        //       phoneNumber: _phoneController.text,
+                        //       id: widget.employee?.id,
+                        //       acceptanceDate: DateTime.now(),
+                        //       positionId: UserRole.values
+                        //           .firstWhere((element) =>
+                        //               element.roleTitle() ==
+                        //               _roleController.text)
+                        //           .index,
+                        //     );
+                        //     context
+                        //         .read<EmployeeListCubit>()
+                        //         .addOrUpdateEmployee(employee);
+                        //     Navigator.pop(context);
+                        //   },
+                        //   style: Themes().writeButtonStyle(context),
+                        //   child: const Text("Записать"),
+                        // ),
                       ],
                     ),
                   ),

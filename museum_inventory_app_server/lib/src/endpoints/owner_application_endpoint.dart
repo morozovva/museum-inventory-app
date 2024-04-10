@@ -8,6 +8,7 @@ class OwnersApplicationEndpoint extends Endpoint {
     return await OwnersApplication.db.find(
       session,
       orderBy: (t) => t.id,
+      include: OwnersApplication.include(owner: Owner.include()),
     );
   }
 
@@ -19,9 +20,11 @@ class OwnersApplicationEndpoint extends Endpoint {
     );
   }
 
-  Future<void> createOwnersApplication(
+  Future<int> createOwnersApplication(
       Session session, OwnersApplication ownersApplication) async {
-    await OwnersApplication.db.insertRow(session, ownersApplication);
+    final newApplication =
+        await OwnersApplication.db.insertRow(session, ownersApplication);
+    return newApplication.id!;
   }
 
   Future<void> updateOwnersApplication(

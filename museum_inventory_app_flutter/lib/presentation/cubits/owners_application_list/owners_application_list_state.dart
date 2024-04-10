@@ -5,8 +5,8 @@ class OwnersApplicationListState with _$OwnersApplicationListState {
   const factory OwnersApplicationListState.initial() =
       _OwnersApplicationListState;
 
-  const factory OwnersApplicationListState.ownersApplicationLoaded({
-    required List<OwnersApplication> ownersApplication,
+  const factory OwnersApplicationListState.ownersApplicationsLoaded({
+    required List<OwnersApplication> ownersApplications,
   }) = _OwnersApplicationLoaded;
 
   const factory OwnersApplicationListState.error() = _OwnersApplicationError;

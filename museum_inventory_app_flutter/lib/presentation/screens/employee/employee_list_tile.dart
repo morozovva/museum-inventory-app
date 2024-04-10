@@ -21,16 +21,16 @@ class EmployeeListTile extends StatelessWidget {
       tileColor: listTileBackground,
       title: Text(employee.name),
       leading: const Icon(Icons.satellite_outlined),
-      trailing: IconButton(
-        onPressed: () {
-          if (employee.id != null) {
-            context.read<EmployeeListCubit>().removeEmployee(employee.id!);
-          }
-        },
-        icon: const Icon(
-          Icons.delete_outline_outlined,
-        ),
-      ),
+      // trailing: IconButton(
+      //   onPressed: () {
+      //     if (employee.id != null) {
+      //       context.read<EmployeeListCubit>().removeEmployee(employee.id!);
+      //     }
+      //   },
+      //   icon: const Icon(
+      //     Icons.delete_outline_outlined,
+      //   ),
+      // ),
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return EmployeeScreen(employee: employee);

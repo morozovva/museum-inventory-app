@@ -50,7 +50,7 @@ class OwnersApplicationListView extends StatelessWidget {
                   OwnersApplicationListState>(
                 builder: (context, state) {
                   return state.maybeWhen(
-                    ownersApplicationLoaded: (ownersApplication) {
+                    ownersApplicationsLoaded: (ownersApplication) {
                       return ListView.builder(
                         itemCount: ownersApplication.length,
                         padding: const EdgeInsets.only(bottom: 8),

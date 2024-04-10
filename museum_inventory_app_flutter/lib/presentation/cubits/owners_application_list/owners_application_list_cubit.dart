@@ -17,8 +17,8 @@ class OwnersApplicationListCubit extends Cubit<OwnersApplicationListState> {
     try {
       final ownersApplication =
           await client.ownersApplication.getAllOwnersApplications();
-      emit(OwnersApplicationListState.ownersApplicationLoaded(
-          ownersApplication: ownersApplication));
+      emit(OwnersApplicationListState.ownersApplicationsLoaded(
+          ownersApplications: ownersApplication));
     } catch (e) {
       emit(const OwnersApplicationListState.error());
       print(e);
@@ -30,7 +30,7 @@ class OwnersApplicationListCubit extends Cubit<OwnersApplicationListState> {
     _load();
   }
 
-  void addOrUpdateOwner(OwnersApplication ownersApplication) async {
+  void addOrUpdateOwnersApplication(OwnersApplication ownersApplication) async {
     if (ownersApplication.id == null) {
       await client.ownersApplication.createOwnersApplication(ownersApplication);
     } else {

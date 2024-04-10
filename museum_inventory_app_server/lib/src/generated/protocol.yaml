@@ -1,5 +1,12 @@
+actVhEfzk:
+  - getAllActVhEfzks:
+  - getActVhEfzk:
+  - createActVhEfzk:
+  - updateActVhEfzk:
+  - deleteActVhEfzk:
 employee:
   - getAllEmployees:
+  - getWorkingEmployees:
   - getEmployee:
   - createEmployee:
   - updateEmployee:
@@ -14,6 +21,14 @@ fileManagement:
   - getFileUrl:
 items:
   - getAllItems:
+  - getItemsWithNoOwnersApplication:
+  - setItemsOwnersApplication:
+  - getItemsWithNoActVhEFZK:
+  - getItemsWithNoReturnAct:
+  - getItemsWithNoPermanentAcceptanceAct:
+  - getItemsWithNoDecomissionAct:
+  - getItemsWithNoEntranceRecord:
+  - getItemsWithNoInventoryRecord:
   - getItem:
   - createItem:
   - updateItem:

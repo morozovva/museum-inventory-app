@@ -34,12 +34,14 @@ import 'position.dart' as _i22;
 import 'protocol_efzk.dart' as _i23;
 import 'return_act.dart' as _i24;
 import 'speaking_employee_efzk.dart' as _i25;
-import 'package:museum_inventory_app_server/src/generated/employee.dart'
+import 'package:museum_inventory_app_server/src/generated/act_vh_efzk.dart'
     as _i26;
-import 'package:museum_inventory_app_server/src/generated/item.dart' as _i27;
+import 'package:museum_inventory_app_server/src/generated/employee.dart'
+    as _i27;
+import 'package:museum_inventory_app_server/src/generated/item.dart' as _i28;
 import 'package:museum_inventory_app_server/src/generated/owners_application.dart'
-    as _i28;
-import 'package:museum_inventory_app_server/src/generated/owner.dart' as _i29;
+    as _i29;
+import 'package:museum_inventory_app_server/src/generated/owner.dart' as _i30;
 export 'act_vh_efzk.dart';
 export 'decomission_act.dart';
 export 'decomission_order.dart';
@@ -92,6 +94,12 @@ class Protocol extends _i1.SerializationManagerServer {
           columnType: _i2.ColumnType.timestampWithoutTimeZone,
           isNullable: false,
           dartType: 'DateTime',
+        ),
+        _i2.ColumnDefinition(
+          name: 'basis',
+          columnType: _i2.ColumnType.text,
+          isNullable: false,
+          dartType: 'String',
         ),
         _i2.ColumnDefinition(
           name: 'note',
@@ -1834,21 +1842,25 @@ class Protocol extends _i1.SerializationManagerServer {
           ? _i25.SpeakingEmployeeEfzk.fromJson(data, this)
           : null) as T;
     }
-    if (t == List<_i26.Employee>) {
-      return (data as List).map((e) => deserialize<_i26.Employee>(e)).toList()
+    if (t == List<_i26.ActVHEFZK>) {
+      return (data as List).map((e) => deserialize<_i26.ActVHEFZK>(e)).toList()
           as dynamic;
     }
-    if (t == List<_i27.Item>) {
-      return (data as List).map((e) => deserialize<_i27.Item>(e)).toList()
+    if (t == List<_i27.Employee>) {
+      return (data as List).map((e) => deserialize<_i27.Employee>(e)).toList()
           as dynamic;
     }
-    if (t == List<_i28.OwnersApplication>) {
+    if (t == List<_i28.Item>) {
+      return (data as List).map((e) => deserialize<_i28.Item>(e)).toList()
+          as dynamic;
+    }
+    if (t == List<_i29.OwnersApplication>) {
       return (data as List)
-          .map((e) => deserialize<_i28.OwnersApplication>(e))
+          .map((e) => deserialize<_i29.OwnersApplication>(e))
           .toList() as dynamic;
     }
-    if (t == List<_i29.Owner>) {
-      return (data as List).map((e) => deserialize<_i29.Owner>(e)).toList()
+    if (t == List<_i30.Owner>) {
+      return (data as List).map((e) => deserialize<_i30.Owner>(e)).toList()
           as dynamic;
     }
     try {

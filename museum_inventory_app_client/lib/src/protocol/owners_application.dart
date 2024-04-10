@@ -9,18 +9,21 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
+import 'protocol.dart' as _i2;
 
 abstract class OwnersApplication extends _i1.SerializableEntity {
   OwnersApplication._({
     this.id,
     required this.file,
     required this.ownerId,
+    this.owner,
   });
 
   factory OwnersApplication({
     int? id,
     required String file,
     required int ownerId,
+    _i2.Owner? owner,
   }) = _OwnersApplicationImpl;
 
   factory OwnersApplication.fromJson(
@@ -32,6 +35,8 @@ abstract class OwnersApplication extends _i1.SerializableEntity {
       file: serializationManager.deserialize<String>(jsonSerialization['file']),
       ownerId:
           serializationManager.deserialize<int>(jsonSerialization['ownerId']),
+      owner: serializationManager
+          .deserialize<_i2.Owner?>(jsonSerialization['owner']),
     );
   }
 
@@ -44,10 +49,13 @@ abstract class OwnersApplication extends _i1.SerializableEntity {
 
   int ownerId;
 
+  _i2.Owner? owner;
+
   OwnersApplication copyWith({
     int? id,
     String? file,
     int? ownerId,
+    _i2.Owner? owner,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -55,6 +63,7 @@ abstract class OwnersApplication extends _i1.SerializableEntity {
       if (id != null) 'id': id,
       'file': file,
       'ownerId': ownerId,
+      if (owner != null) 'owner': owner?.toJson(),
     };
   }
 }
@@ -66,10 +75,12 @@ class _OwnersApplicationImpl extends OwnersApplication {
     int? id,
     required String file,
     required int ownerId,
+    _i2.Owner? owner,
   }) : super._(
           id: id,
           file: file,
           ownerId: ownerId,
+          owner: owner,
         );
 
   @override
@@ -77,11 +88,13 @@ class _OwnersApplicationImpl extends OwnersApplication {
     Object? id = _Undefined,
     String? file,
     int? ownerId,
+    Object? owner = _Undefined,
   }) {
     return OwnersApplication(
       id: id is int? ? id : this.id,
       file: file ?? this.file,
       ownerId: ownerId ?? this.ownerId,
+      owner: owner is _i2.Owner? ? owner : this.owner?.copyWith(),
     );
   }
 }

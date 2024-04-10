@@ -1,4 +1,3 @@
-import 'package:museum_inventory_app_server/src/generated/position.dart';
 import 'package:serverpod/server.dart';
 
 import '../generated/protocol.dart';
@@ -8,6 +7,17 @@ class EmployeeEndpoint extends Endpoint {
     return await Employee.db.find(
       session,
       orderBy: (t) => t.id,
+      include: Employee.include(
+        position: Position.include(),
+      ),
+    );
+  }
+
+  Future<List<Employee>> getWorkingEmployees(Session session) async {
+    return await Employee.db.find(
+      session,
+      where: (p0) => p0.dismissalDate.equals(null),
+      orderBy: (t) => t.id,
     );
   }
 
@@ -15,7 +25,9 @@ class EmployeeEndpoint extends Endpoint {
     return await Employee.db.findById(
       session,
       id,
-      include: Employee.include(position: Position.include()),
+      include: Employee.include(
+        position: Position.include(),
+      ),
     );
   }
 

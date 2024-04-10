@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'owners_application_list_cubit.dart';
+part of 'owners_application_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,51 +15,47 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$OwnersApplicationListState {
+mixin _$OwnersApplicationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<OwnersApplication> ownersApplications)
-        ownersApplicationsLoaded,
+    required TResult Function(Set<int> itemIds) formChanged,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<OwnersApplication> ownersApplications)?
-        ownersApplicationsLoaded,
+    TResult? Function(Set<int> itemIds)? formChanged,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<OwnersApplication> ownersApplications)?
-        ownersApplicationsLoaded,
+    TResult Function(Set<int> itemIds)? formChanged,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OwnersApplicationListState value) initial,
-    required TResult Function(_OwnersApplicationLoaded value)
-        ownersApplicationsLoaded,
+    required TResult Function(_OwnersApplicationState value) initial,
+    required TResult Function(_OwnersApplicationFormChanged value) formChanged,
     required TResult Function(_OwnersApplicationError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_OwnersApplicationListState value)? initial,
-    TResult? Function(_OwnersApplicationLoaded value)? ownersApplicationsLoaded,
+    TResult? Function(_OwnersApplicationState value)? initial,
+    TResult? Function(_OwnersApplicationFormChanged value)? formChanged,
     TResult? Function(_OwnersApplicationError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OwnersApplicationListState value)? initial,
-    TResult Function(_OwnersApplicationLoaded value)? ownersApplicationsLoaded,
+    TResult Function(_OwnersApplicationState value)? initial,
+    TResult Function(_OwnersApplicationFormChanged value)? formChanged,
     TResult Function(_OwnersApplicationError value)? error,
     required TResult orElse(),
   }) =>
@@ -67,18 +63,17 @@ mixin _$OwnersApplicationListState {
 }
 
 /// @nodoc
-abstract class $OwnersApplicationListStateCopyWith<$Res> {
-  factory $OwnersApplicationListStateCopyWith(OwnersApplicationListState value,
-          $Res Function(OwnersApplicationListState) then) =
-      _$OwnersApplicationListStateCopyWithImpl<$Res,
-          OwnersApplicationListState>;
+abstract class $OwnersApplicationStateCopyWith<$Res> {
+  factory $OwnersApplicationStateCopyWith(OwnersApplicationState value,
+          $Res Function(OwnersApplicationState) then) =
+      _$OwnersApplicationStateCopyWithImpl<$Res, OwnersApplicationState>;
 }
 
 /// @nodoc
-class _$OwnersApplicationListStateCopyWithImpl<$Res,
-        $Val extends OwnersApplicationListState>
-    implements $OwnersApplicationListStateCopyWith<$Res> {
-  _$OwnersApplicationListStateCopyWithImpl(this._value, this._then);
+class _$OwnersApplicationStateCopyWithImpl<$Res,
+        $Val extends OwnersApplicationState>
+    implements $OwnersApplicationStateCopyWith<$Res> {
+  _$OwnersApplicationStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -87,39 +82,39 @@ class _$OwnersApplicationListStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$OwnersApplicationListStateImplCopyWith<$Res> {
-  factory _$$OwnersApplicationListStateImplCopyWith(
-          _$OwnersApplicationListStateImpl value,
-          $Res Function(_$OwnersApplicationListStateImpl) then) =
-      __$$OwnersApplicationListStateImplCopyWithImpl<$Res>;
+abstract class _$$OwnersApplicationStateImplCopyWith<$Res> {
+  factory _$$OwnersApplicationStateImplCopyWith(
+          _$OwnersApplicationStateImpl value,
+          $Res Function(_$OwnersApplicationStateImpl) then) =
+      __$$OwnersApplicationStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$OwnersApplicationListStateImplCopyWithImpl<$Res>
-    extends _$OwnersApplicationListStateCopyWithImpl<$Res,
-        _$OwnersApplicationListStateImpl>
-    implements _$$OwnersApplicationListStateImplCopyWith<$Res> {
-  __$$OwnersApplicationListStateImplCopyWithImpl(
-      _$OwnersApplicationListStateImpl _value,
-      $Res Function(_$OwnersApplicationListStateImpl) _then)
+class __$$OwnersApplicationStateImplCopyWithImpl<$Res>
+    extends _$OwnersApplicationStateCopyWithImpl<$Res,
+        _$OwnersApplicationStateImpl>
+    implements _$$OwnersApplicationStateImplCopyWith<$Res> {
+  __$$OwnersApplicationStateImplCopyWithImpl(
+      _$OwnersApplicationStateImpl _value,
+      $Res Function(_$OwnersApplicationStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$OwnersApplicationListStateImpl implements _OwnersApplicationListState {
-  const _$OwnersApplicationListStateImpl();
+class _$OwnersApplicationStateImpl implements _OwnersApplicationState {
+  const _$OwnersApplicationStateImpl();
 
   @override
   String toString() {
-    return 'OwnersApplicationListState.initial()';
+    return 'OwnersApplicationState.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OwnersApplicationListStateImpl);
+            other is _$OwnersApplicationStateImpl);
   }
 
   @override
@@ -129,8 +124,7 @@ class _$OwnersApplicationListStateImpl implements _OwnersApplicationListState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<OwnersApplication> ownersApplications)
-        ownersApplicationsLoaded,
+    required TResult Function(Set<int> itemIds) formChanged,
     required TResult Function() error,
   }) {
     return initial();
@@ -140,8 +134,7 @@ class _$OwnersApplicationListStateImpl implements _OwnersApplicationListState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<OwnersApplication> ownersApplications)?
-        ownersApplicationsLoaded,
+    TResult? Function(Set<int> itemIds)? formChanged,
     TResult? Function()? error,
   }) {
     return initial?.call();
@@ -151,8 +144,7 @@ class _$OwnersApplicationListStateImpl implements _OwnersApplicationListState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<OwnersApplication> ownersApplications)?
-        ownersApplicationsLoaded,
+    TResult Function(Set<int> itemIds)? formChanged,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -165,9 +157,8 @@ class _$OwnersApplicationListStateImpl implements _OwnersApplicationListState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OwnersApplicationListState value) initial,
-    required TResult Function(_OwnersApplicationLoaded value)
-        ownersApplicationsLoaded,
+    required TResult Function(_OwnersApplicationState value) initial,
+    required TResult Function(_OwnersApplicationFormChanged value) formChanged,
     required TResult Function(_OwnersApplicationError value) error,
   }) {
     return initial(this);
@@ -176,8 +167,8 @@ class _$OwnersApplicationListStateImpl implements _OwnersApplicationListState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_OwnersApplicationListState value)? initial,
-    TResult? Function(_OwnersApplicationLoaded value)? ownersApplicationsLoaded,
+    TResult? Function(_OwnersApplicationState value)? initial,
+    TResult? Function(_OwnersApplicationFormChanged value)? formChanged,
     TResult? Function(_OwnersApplicationError value)? error,
   }) {
     return initial?.call(this);
@@ -186,8 +177,8 @@ class _$OwnersApplicationListStateImpl implements _OwnersApplicationListState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OwnersApplicationListState value)? initial,
-    TResult Function(_OwnersApplicationLoaded value)? ownersApplicationsLoaded,
+    TResult Function(_OwnersApplicationState value)? initial,
+    TResult Function(_OwnersApplicationFormChanged value)? formChanged,
     TResult Function(_OwnersApplicationError value)? error,
     required TResult orElse(),
   }) {
@@ -198,120 +189,116 @@ class _$OwnersApplicationListStateImpl implements _OwnersApplicationListState {
   }
 }
 
-abstract class _OwnersApplicationListState
-    implements OwnersApplicationListState {
-  const factory _OwnersApplicationListState() =
-      _$OwnersApplicationListStateImpl;
+abstract class _OwnersApplicationState implements OwnersApplicationState {
+  const factory _OwnersApplicationState() = _$OwnersApplicationStateImpl;
 }
 
 /// @nodoc
-abstract class _$$OwnersApplicationLoadedImplCopyWith<$Res> {
-  factory _$$OwnersApplicationLoadedImplCopyWith(
-          _$OwnersApplicationLoadedImpl value,
-          $Res Function(_$OwnersApplicationLoadedImpl) then) =
-      __$$OwnersApplicationLoadedImplCopyWithImpl<$Res>;
+abstract class _$$OwnersApplicationFormChangedImplCopyWith<$Res> {
+  factory _$$OwnersApplicationFormChangedImplCopyWith(
+          _$OwnersApplicationFormChangedImpl value,
+          $Res Function(_$OwnersApplicationFormChangedImpl) then) =
+      __$$OwnersApplicationFormChangedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<OwnersApplication> ownersApplications});
+  $Res call({Set<int> itemIds});
 }
 
 /// @nodoc
-class __$$OwnersApplicationLoadedImplCopyWithImpl<$Res>
-    extends _$OwnersApplicationListStateCopyWithImpl<$Res,
-        _$OwnersApplicationLoadedImpl>
-    implements _$$OwnersApplicationLoadedImplCopyWith<$Res> {
-  __$$OwnersApplicationLoadedImplCopyWithImpl(
-      _$OwnersApplicationLoadedImpl _value,
-      $Res Function(_$OwnersApplicationLoadedImpl) _then)
+class __$$OwnersApplicationFormChangedImplCopyWithImpl<$Res>
+    extends _$OwnersApplicationStateCopyWithImpl<$Res,
+        _$OwnersApplicationFormChangedImpl>
+    implements _$$OwnersApplicationFormChangedImplCopyWith<$Res> {
+  __$$OwnersApplicationFormChangedImplCopyWithImpl(
+      _$OwnersApplicationFormChangedImpl _value,
+      $Res Function(_$OwnersApplicationFormChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ownersApplications = null,
+    Object? itemIds = null,
   }) {
-    return _then(_$OwnersApplicationLoadedImpl(
-      ownersApplications: null == ownersApplications
-          ? _value._ownersApplications
-          : ownersApplications // ignore: cast_nullable_to_non_nullable
-              as List<OwnersApplication>,
+    return _then(_$OwnersApplicationFormChangedImpl(
+      itemIds: null == itemIds
+          ? _value._itemIds
+          : itemIds // ignore: cast_nullable_to_non_nullable
+              as Set<int>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$OwnersApplicationLoadedImpl implements _OwnersApplicationLoaded {
-  const _$OwnersApplicationLoadedImpl(
-      {required final List<OwnersApplication> ownersApplications})
-      : _ownersApplications = ownersApplications;
+class _$OwnersApplicationFormChangedImpl
+    implements _OwnersApplicationFormChanged {
+  const _$OwnersApplicationFormChangedImpl({required final Set<int> itemIds})
+      : _itemIds = itemIds;
 
-  final List<OwnersApplication> _ownersApplications;
+// required OwnersApplication ownersApplication,
+  final Set<int> _itemIds;
+// required OwnersApplication ownersApplication,
   @override
-  List<OwnersApplication> get ownersApplications {
-    if (_ownersApplications is EqualUnmodifiableListView)
-      return _ownersApplications;
+  Set<int> get itemIds {
+    if (_itemIds is EqualUnmodifiableSetView) return _itemIds;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_ownersApplications);
+    return EqualUnmodifiableSetView(_itemIds);
   }
 
   @override
   String toString() {
-    return 'OwnersApplicationListState.ownersApplicationsLoaded(ownersApplications: $ownersApplications)';
+    return 'OwnersApplicationState.formChanged(itemIds: $itemIds)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OwnersApplicationLoadedImpl &&
-            const DeepCollectionEquality()
-                .equals(other._ownersApplications, _ownersApplications));
+            other is _$OwnersApplicationFormChangedImpl &&
+            const DeepCollectionEquality().equals(other._itemIds, _itemIds));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_ownersApplications));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_itemIds));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OwnersApplicationLoadedImplCopyWith<_$OwnersApplicationLoadedImpl>
-      get copyWith => __$$OwnersApplicationLoadedImplCopyWithImpl<
-          _$OwnersApplicationLoadedImpl>(this, _$identity);
+  _$$OwnersApplicationFormChangedImplCopyWith<
+          _$OwnersApplicationFormChangedImpl>
+      get copyWith => __$$OwnersApplicationFormChangedImplCopyWithImpl<
+          _$OwnersApplicationFormChangedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<OwnersApplication> ownersApplications)
-        ownersApplicationsLoaded,
+    required TResult Function(Set<int> itemIds) formChanged,
     required TResult Function() error,
   }) {
-    return ownersApplicationsLoaded(ownersApplications);
+    return formChanged(itemIds);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<OwnersApplication> ownersApplications)?
-        ownersApplicationsLoaded,
+    TResult? Function(Set<int> itemIds)? formChanged,
     TResult? Function()? error,
   }) {
-    return ownersApplicationsLoaded?.call(ownersApplications);
+    return formChanged?.call(itemIds);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<OwnersApplication> ownersApplications)?
-        ownersApplicationsLoaded,
+    TResult Function(Set<int> itemIds)? formChanged,
     TResult Function()? error,
     required TResult orElse(),
   }) {
-    if (ownersApplicationsLoaded != null) {
-      return ownersApplicationsLoaded(ownersApplications);
+    if (formChanged != null) {
+      return formChanged(itemIds);
     }
     return orElse();
   }
@@ -319,47 +306,47 @@ class _$OwnersApplicationLoadedImpl implements _OwnersApplicationLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OwnersApplicationListState value) initial,
-    required TResult Function(_OwnersApplicationLoaded value)
-        ownersApplicationsLoaded,
+    required TResult Function(_OwnersApplicationState value) initial,
+    required TResult Function(_OwnersApplicationFormChanged value) formChanged,
     required TResult Function(_OwnersApplicationError value) error,
   }) {
-    return ownersApplicationsLoaded(this);
+    return formChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_OwnersApplicationListState value)? initial,
-    TResult? Function(_OwnersApplicationLoaded value)? ownersApplicationsLoaded,
+    TResult? Function(_OwnersApplicationState value)? initial,
+    TResult? Function(_OwnersApplicationFormChanged value)? formChanged,
     TResult? Function(_OwnersApplicationError value)? error,
   }) {
-    return ownersApplicationsLoaded?.call(this);
+    return formChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OwnersApplicationListState value)? initial,
-    TResult Function(_OwnersApplicationLoaded value)? ownersApplicationsLoaded,
+    TResult Function(_OwnersApplicationState value)? initial,
+    TResult Function(_OwnersApplicationFormChanged value)? formChanged,
     TResult Function(_OwnersApplicationError value)? error,
     required TResult orElse(),
   }) {
-    if (ownersApplicationsLoaded != null) {
-      return ownersApplicationsLoaded(this);
+    if (formChanged != null) {
+      return formChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _OwnersApplicationLoaded implements OwnersApplicationListState {
-  const factory _OwnersApplicationLoaded(
-          {required final List<OwnersApplication> ownersApplications}) =
-      _$OwnersApplicationLoadedImpl;
+abstract class _OwnersApplicationFormChanged implements OwnersApplicationState {
+  const factory _OwnersApplicationFormChanged(
+      {required final Set<int> itemIds}) = _$OwnersApplicationFormChangedImpl;
 
-  List<OwnersApplication> get ownersApplications;
+// required OwnersApplication ownersApplication,
+  Set<int> get itemIds;
   @JsonKey(ignore: true)
-  _$$OwnersApplicationLoadedImplCopyWith<_$OwnersApplicationLoadedImpl>
+  _$$OwnersApplicationFormChangedImplCopyWith<
+          _$OwnersApplicationFormChangedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -373,7 +360,7 @@ abstract class _$$OwnersApplicationErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$OwnersApplicationErrorImplCopyWithImpl<$Res>
-    extends _$OwnersApplicationListStateCopyWithImpl<$Res,
+    extends _$OwnersApplicationStateCopyWithImpl<$Res,
         _$OwnersApplicationErrorImpl>
     implements _$$OwnersApplicationErrorImplCopyWith<$Res> {
   __$$OwnersApplicationErrorImplCopyWithImpl(
@@ -389,7 +376,7 @@ class _$OwnersApplicationErrorImpl implements _OwnersApplicationError {
 
   @override
   String toString() {
-    return 'OwnersApplicationListState.error()';
+    return 'OwnersApplicationState.error()';
   }
 
   @override
@@ -406,8 +393,7 @@ class _$OwnersApplicationErrorImpl implements _OwnersApplicationError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<OwnersApplication> ownersApplications)
-        ownersApplicationsLoaded,
+    required TResult Function(Set<int> itemIds) formChanged,
     required TResult Function() error,
   }) {
     return error();
@@ -417,8 +403,7 @@ class _$OwnersApplicationErrorImpl implements _OwnersApplicationError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<OwnersApplication> ownersApplications)?
-        ownersApplicationsLoaded,
+    TResult? Function(Set<int> itemIds)? formChanged,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -428,8 +413,7 @@ class _$OwnersApplicationErrorImpl implements _OwnersApplicationError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<OwnersApplication> ownersApplications)?
-        ownersApplicationsLoaded,
+    TResult Function(Set<int> itemIds)? formChanged,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -442,9 +426,8 @@ class _$OwnersApplicationErrorImpl implements _OwnersApplicationError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OwnersApplicationListState value) initial,
-    required TResult Function(_OwnersApplicationLoaded value)
-        ownersApplicationsLoaded,
+    required TResult Function(_OwnersApplicationState value) initial,
+    required TResult Function(_OwnersApplicationFormChanged value) formChanged,
     required TResult Function(_OwnersApplicationError value) error,
   }) {
     return error(this);
@@ -453,8 +436,8 @@ class _$OwnersApplicationErrorImpl implements _OwnersApplicationError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_OwnersApplicationListState value)? initial,
-    TResult? Function(_OwnersApplicationLoaded value)? ownersApplicationsLoaded,
+    TResult? Function(_OwnersApplicationState value)? initial,
+    TResult? Function(_OwnersApplicationFormChanged value)? formChanged,
     TResult? Function(_OwnersApplicationError value)? error,
   }) {
     return error?.call(this);
@@ -463,8 +446,8 @@ class _$OwnersApplicationErrorImpl implements _OwnersApplicationError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OwnersApplicationListState value)? initial,
-    TResult Function(_OwnersApplicationLoaded value)? ownersApplicationsLoaded,
+    TResult Function(_OwnersApplicationState value)? initial,
+    TResult Function(_OwnersApplicationFormChanged value)? formChanged,
     TResult Function(_OwnersApplicationError value)? error,
     required TResult orElse(),
   }) {
@@ -475,6 +458,6 @@ class _$OwnersApplicationErrorImpl implements _OwnersApplicationError {
   }
 }
 
-abstract class _OwnersApplicationError implements OwnersApplicationListState {
+abstract class _OwnersApplicationError implements OwnersApplicationState {
   const factory _OwnersApplicationError() = _$OwnersApplicationErrorImpl;
 }

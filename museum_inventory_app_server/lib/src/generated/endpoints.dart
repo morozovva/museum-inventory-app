@@ -9,59 +9,157 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
-import '../endpoints/employee_endpoint.dart' as _i2;
-import '../endpoints/example_endpoint.dart' as _i3;
-import '../endpoints/file_management_endpoint.dart' as _i4;
-import '../endpoints/item_endpoint.dart' as _i5;
-import '../endpoints/owner_application_endpoint.dart' as _i6;
-import '../endpoints/owner_endpoint.dart' as _i7;
-import 'package:museum_inventory_app_server/src/generated/employee.dart' as _i8;
-import 'package:museum_inventory_app_server/src/generated/item.dart' as _i9;
-import 'package:museum_inventory_app_server/src/generated/owners_application.dart'
+import '../endpoints/act_vh_efzk_endpoint.dart' as _i2;
+import '../endpoints/employee_endpoint.dart' as _i3;
+import '../endpoints/example_endpoint.dart' as _i4;
+import '../endpoints/file_management_endpoint.dart' as _i5;
+import '../endpoints/item_endpoint.dart' as _i6;
+import '../endpoints/owner_application_endpoint.dart' as _i7;
+import '../endpoints/owner_endpoint.dart' as _i8;
+import 'package:museum_inventory_app_server/src/generated/act_vh_efzk.dart'
+    as _i9;
+import 'package:museum_inventory_app_server/src/generated/employee.dart'
     as _i10;
-import 'package:museum_inventory_app_server/src/generated/owner.dart' as _i11;
+import 'package:museum_inventory_app_server/src/generated/item.dart' as _i11;
+import 'package:museum_inventory_app_server/src/generated/owners_application.dart'
+    as _i12;
+import 'package:museum_inventory_app_server/src/generated/owner.dart' as _i13;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
   void initializeEndpoints(_i1.Server server) {
     var endpoints = <String, _i1.Endpoint>{
-      'employee': _i2.EmployeeEndpoint()
+      'actVhEfzk': _i2.ActVhEfzkEndpoint()
+        ..initialize(
+          server,
+          'actVhEfzk',
+          null,
+        ),
+      'employee': _i3.EmployeeEndpoint()
         ..initialize(
           server,
           'employee',
           null,
         ),
-      'example': _i3.ExampleEndpoint()
+      'example': _i4.ExampleEndpoint()
         ..initialize(
           server,
           'example',
           null,
         ),
-      'fileManagement': _i4.FileManagementEndpoint()
+      'fileManagement': _i5.FileManagementEndpoint()
         ..initialize(
           server,
           'fileManagement',
           null,
         ),
-      'items': _i5.ItemsEndpoint()
+      'items': _i6.ItemsEndpoint()
         ..initialize(
           server,
           'items',
           null,
         ),
-      'ownersApplication': _i6.OwnersApplicationEndpoint()
+      'ownersApplication': _i7.OwnersApplicationEndpoint()
         ..initialize(
           server,
           'ownersApplication',
           null,
         ),
-      'owners': _i7.OwnersEndpoint()
+      'owners': _i8.OwnersEndpoint()
         ..initialize(
           server,
           'owners',
           null,
         ),
     };
+    connectors['actVhEfzk'] = _i1.EndpointConnector(
+      name: 'actVhEfzk',
+      endpoint: endpoints['actVhEfzk']!,
+      methodConnectors: {
+        'getAllActVhEfzks': _i1.MethodConnector(
+          name: 'getAllActVhEfzks',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['actVhEfzk'] as _i2.ActVhEfzkEndpoint)
+                  .getAllActVhEfzks(session),
+        ),
+        'getActVhEfzk': _i1.MethodConnector(
+          name: 'getActVhEfzk',
+          params: {
+            'id': _i1.ParameterDescription(
+              name: 'id',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['actVhEfzk'] as _i2.ActVhEfzkEndpoint).getActVhEfzk(
+            session,
+            params['id'],
+          ),
+        ),
+        'createActVhEfzk': _i1.MethodConnector(
+          name: 'createActVhEfzk',
+          params: {
+            'actVhEfzk': _i1.ParameterDescription(
+              name: 'actVhEfzk',
+              type: _i1.getType<_i9.ActVHEFZK>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['actVhEfzk'] as _i2.ActVhEfzkEndpoint).createActVhEfzk(
+            session,
+            params['actVhEfzk'],
+          ),
+        ),
+        'updateActVhEfzk': _i1.MethodConnector(
+          name: 'updateActVhEfzk',
+          params: {
+            'actVhEfzk': _i1.ParameterDescription(
+              name: 'actVhEfzk',
+              type: _i1.getType<_i9.ActVHEFZK>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['actVhEfzk'] as _i2.ActVhEfzkEndpoint).updateActVhEfzk(
+            session,
+            params['actVhEfzk'],
+          ),
+        ),
+        'deleteActVhEfzk': _i1.MethodConnector(
+          name: 'deleteActVhEfzk',
+          params: {
+            'id': _i1.ParameterDescription(
+              name: 'id',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['actVhEfzk'] as _i2.ActVhEfzkEndpoint).deleteActVhEfzk(
+            session,
+            params['id'],
+          ),
+        ),
+      },
+    );
     connectors['employee'] = _i1.EndpointConnector(
       name: 'employee',
       endpoint: endpoints['employee']!,
@@ -73,8 +171,18 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['employee'] as _i2.EmployeeEndpoint)
+              (endpoints['employee'] as _i3.EmployeeEndpoint)
                   .getAllEmployees(session),
+        ),
+        'getWorkingEmployees': _i1.MethodConnector(
+          name: 'getWorkingEmployees',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['employee'] as _i3.EmployeeEndpoint)
+                  .getWorkingEmployees(session),
         ),
         'getEmployee': _i1.MethodConnector(
           name: 'getEmployee',
@@ -89,7 +197,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['employee'] as _i2.EmployeeEndpoint).getEmployee(
+              (endpoints['employee'] as _i3.EmployeeEndpoint).getEmployee(
             session,
             params['id'],
           ),
@@ -99,7 +207,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'employee': _i1.ParameterDescription(
               name: 'employee',
-              type: _i1.getType<_i8.Employee>(),
+              type: _i1.getType<_i10.Employee>(),
               nullable: false,
             )
           },
@@ -107,7 +215,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['employee'] as _i2.EmployeeEndpoint).createEmployee(
+              (endpoints['employee'] as _i3.EmployeeEndpoint).createEmployee(
             session,
             params['employee'],
           ),
@@ -117,7 +225,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'employee': _i1.ParameterDescription(
               name: 'employee',
-              type: _i1.getType<_i8.Employee>(),
+              type: _i1.getType<_i10.Employee>(),
               nullable: false,
             )
           },
@@ -125,7 +233,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['employee'] as _i2.EmployeeEndpoint).updateEmployee(
+              (endpoints['employee'] as _i3.EmployeeEndpoint).updateEmployee(
             session,
             params['employee'],
           ),
@@ -143,7 +251,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['employee'] as _i2.EmployeeEndpoint).deleteEmployee(
+              (endpoints['employee'] as _i3.EmployeeEndpoint).deleteEmployee(
             session,
             params['id'],
           ),
@@ -167,7 +275,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['example'] as _i3.ExampleEndpoint).hello(
+              (endpoints['example'] as _i4.ExampleEndpoint).hello(
             session,
             params['name'],
           ),
@@ -191,7 +299,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['fileManagement'] as _i4.FileManagementEndpoint)
+              (endpoints['fileManagement'] as _i5.FileManagementEndpoint)
                   .getUploadDescription(
             session,
             params['path'],
@@ -210,7 +318,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['fileManagement'] as _i4.FileManagementEndpoint)
+              (endpoints['fileManagement'] as _i5.FileManagementEndpoint)
                   .verifyUpload(
             session,
             params['path'],
@@ -229,7 +337,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['fileManagement'] as _i4.FileManagementEndpoint)
+              (endpoints['fileManagement'] as _i5.FileManagementEndpoint)
                   .deleteFile(
             session,
             params['path'],
@@ -248,7 +356,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['fileManagement'] as _i4.FileManagementEndpoint)
+              (endpoints['fileManagement'] as _i5.FileManagementEndpoint)
                   .checkIfFileExists(
             session,
             params['path'],
@@ -267,7 +375,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['fileManagement'] as _i4.FileManagementEndpoint)
+              (endpoints['fileManagement'] as _i5.FileManagementEndpoint)
                   .getFileUrl(
             session,
             params['path'],
@@ -286,7 +394,102 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['items'] as _i5.ItemsEndpoint).getAllItems(session),
+              (endpoints['items'] as _i6.ItemsEndpoint).getAllItems(session),
+        ),
+        'getItemsWithNoOwnersApplication': _i1.MethodConnector(
+          name: 'getItemsWithNoOwnersApplication',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['items'] as _i6.ItemsEndpoint)
+                  .getItemsWithNoOwnersApplication(session),
+        ),
+        'setItemsOwnersApplication': _i1.MethodConnector(
+          name: 'setItemsOwnersApplication',
+          params: {
+            'id': _i1.ParameterDescription(
+              name: 'id',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'applicationId': _i1.ParameterDescription(
+              name: 'applicationId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['items'] as _i6.ItemsEndpoint)
+                  .setItemsOwnersApplication(
+            session,
+            params['id'],
+            params['applicationId'],
+          ),
+        ),
+        'getItemsWithNoActVhEFZK': _i1.MethodConnector(
+          name: 'getItemsWithNoActVhEFZK',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['items'] as _i6.ItemsEndpoint)
+                  .getItemsWithNoActVhEFZK(session),
+        ),
+        'getItemsWithNoReturnAct': _i1.MethodConnector(
+          name: 'getItemsWithNoReturnAct',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['items'] as _i6.ItemsEndpoint)
+                  .getItemsWithNoReturnAct(session),
+        ),
+        'getItemsWithNoPermanentAcceptanceAct': _i1.MethodConnector(
+          name: 'getItemsWithNoPermanentAcceptanceAct',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['items'] as _i6.ItemsEndpoint)
+                  .getItemsWithNoPermanentAcceptanceAct(session),
+        ),
+        'getItemsWithNoDecomissionAct': _i1.MethodConnector(
+          name: 'getItemsWithNoDecomissionAct',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['items'] as _i6.ItemsEndpoint)
+                  .getItemsWithNoDecomissionAct(session),
+        ),
+        'getItemsWithNoEntranceRecord': _i1.MethodConnector(
+          name: 'getItemsWithNoEntranceRecord',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['items'] as _i6.ItemsEndpoint)
+                  .getItemsWithNoEntranceRecord(session),
+        ),
+        'getItemsWithNoInventoryRecord': _i1.MethodConnector(
+          name: 'getItemsWithNoInventoryRecord',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['items'] as _i6.ItemsEndpoint)
+                  .getItemsWithNoInventoryRecord(session),
         ),
         'getItem': _i1.MethodConnector(
           name: 'getItem',
@@ -301,7 +504,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['items'] as _i5.ItemsEndpoint).getItem(
+              (endpoints['items'] as _i6.ItemsEndpoint).getItem(
             session,
             params['id'],
           ),
@@ -311,7 +514,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'item': _i1.ParameterDescription(
               name: 'item',
-              type: _i1.getType<_i9.Item>(),
+              type: _i1.getType<_i11.Item>(),
               nullable: false,
             )
           },
@@ -319,7 +522,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['items'] as _i5.ItemsEndpoint).createItem(
+              (endpoints['items'] as _i6.ItemsEndpoint).createItem(
             session,
             params['item'],
           ),
@@ -329,7 +532,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'item': _i1.ParameterDescription(
               name: 'item',
-              type: _i1.getType<_i9.Item>(),
+              type: _i1.getType<_i11.Item>(),
               nullable: false,
             )
           },
@@ -337,7 +540,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['items'] as _i5.ItemsEndpoint).updateItem(
+              (endpoints['items'] as _i6.ItemsEndpoint).updateItem(
             session,
             params['item'],
           ),
@@ -355,7 +558,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['items'] as _i5.ItemsEndpoint).deleteItem(
+              (endpoints['items'] as _i6.ItemsEndpoint).deleteItem(
             session,
             params['id'],
           ),
@@ -373,7 +576,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['ownersApplication'] as _i6.OwnersApplicationEndpoint)
+              (endpoints['ownersApplication'] as _i7.OwnersApplicationEndpoint)
                   .getAllOwnersApplications(session),
         ),
         'getOwnersApplication': _i1.MethodConnector(
@@ -389,7 +592,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['ownersApplication'] as _i6.OwnersApplicationEndpoint)
+              (endpoints['ownersApplication'] as _i7.OwnersApplicationEndpoint)
                   .getOwnersApplication(
             session,
             params['id'],
@@ -400,7 +603,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'ownersApplication': _i1.ParameterDescription(
               name: 'ownersApplication',
-              type: _i1.getType<_i10.OwnersApplication>(),
+              type: _i1.getType<_i12.OwnersApplication>(),
               nullable: false,
             )
           },
@@ -408,7 +611,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['ownersApplication'] as _i6.OwnersApplicationEndpoint)
+              (endpoints['ownersApplication'] as _i7.OwnersApplicationEndpoint)
                   .createOwnersApplication(
             session,
             params['ownersApplication'],
@@ -419,7 +622,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'ownersApplication': _i1.ParameterDescription(
               name: 'ownersApplication',
-              type: _i1.getType<_i10.OwnersApplication>(),
+              type: _i1.getType<_i12.OwnersApplication>(),
               nullable: false,
             )
           },
@@ -427,7 +630,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['ownersApplication'] as _i6.OwnersApplicationEndpoint)
+              (endpoints['ownersApplication'] as _i7.OwnersApplicationEndpoint)
                   .updateOwnersApplication(
             session,
             params['ownersApplication'],
@@ -446,7 +649,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['ownersApplication'] as _i6.OwnersApplicationEndpoint)
+              (endpoints['ownersApplication'] as _i7.OwnersApplicationEndpoint)
                   .deleteOwnersApplication(
             session,
             params['id'],
@@ -465,7 +668,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['owners'] as _i7.OwnersEndpoint).getAllOwners(session),
+              (endpoints['owners'] as _i8.OwnersEndpoint).getAllOwners(session),
         ),
         'getOwner': _i1.MethodConnector(
           name: 'getOwner',
@@ -480,7 +683,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['owners'] as _i7.OwnersEndpoint).getOwner(
+              (endpoints['owners'] as _i8.OwnersEndpoint).getOwner(
             session,
             params['id'],
           ),
@@ -490,7 +693,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'owner': _i1.ParameterDescription(
               name: 'owner',
-              type: _i1.getType<_i11.Owner>(),
+              type: _i1.getType<_i13.Owner>(),
               nullable: false,
             )
           },
@@ -498,7 +701,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['owners'] as _i7.OwnersEndpoint).createOwner(
+              (endpoints['owners'] as _i8.OwnersEndpoint).createOwner(
             session,
             params['owner'],
           ),
@@ -508,7 +711,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'owner': _i1.ParameterDescription(
               name: 'owner',
-              type: _i1.getType<_i11.Owner>(),
+              type: _i1.getType<_i13.Owner>(),
               nullable: false,
             )
           },
@@ -516,7 +719,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['owners'] as _i7.OwnersEndpoint).updateOwner(
+              (endpoints['owners'] as _i8.OwnersEndpoint).updateOwner(
             session,
             params['owner'],
           ),
@@ -534,7 +737,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['owners'] as _i7.OwnersEndpoint).deleteOwner(
+              (endpoints['owners'] as _i8.OwnersEndpoint).deleteOwner(
             session,
             params['id'],
           ),

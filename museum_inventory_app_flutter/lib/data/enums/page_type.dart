@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:museum_inventory_app_flutter/presentation/screens/act_vh_efzk/act_vh_efzk_list_view.dart';
 
 import '../../presentation/screens/employee/employee_list_view.dart';
 import '../../presentation/screens/items/items_list_view.dart';
@@ -33,8 +34,8 @@ extension PageTypeValues on PageType {
         return const OwnersListView();
       case PageType.ownersActs:
         return const OwnersApplicationListView();
-      // case PageType.actsVHEFZK:
-      // return const ActsVHEFZKListView();
+      case PageType.actsVHEFZK:
+        return const ActVhEfzkListView();
       // case PageType.actsOfPermanentAcceptance:
       // return const ActsOfPermanentAcceptanceListView();
       // case PageType.actsOfReturn:

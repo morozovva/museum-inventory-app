@@ -9,22 +9,27 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
+import 'protocol.dart' as _i2;
 import 'package:serverpod_serialization/serverpod_serialization.dart';
 
 abstract class ActVHEFZK extends _i1.TableRow {
   ActVHEFZK._({
     int? id,
     required this.date,
+    required this.basis,
     required this.note,
     required this.employeeId,
+    this.employee,
     required this.signed,
   }) : super(id);
 
   factory ActVHEFZK({
     int? id,
     required DateTime date,
+    required String basis,
     required String note,
     required int employeeId,
+    _i2.Employee? employee,
     required bool signed,
   }) = _ActVHEFZKImpl;
 
@@ -36,9 +41,13 @@ abstract class ActVHEFZK extends _i1.TableRow {
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
       date:
           serializationManager.deserialize<DateTime>(jsonSerialization['date']),
+      basis:
+          serializationManager.deserialize<String>(jsonSerialization['basis']),
       note: serializationManager.deserialize<String>(jsonSerialization['note']),
       employeeId: serializationManager
           .deserialize<int>(jsonSerialization['employeeId']),
+      employee: serializationManager
+          .deserialize<_i2.Employee?>(jsonSerialization['employee']),
       signed:
           serializationManager.deserialize<bool>(jsonSerialization['signed']),
     );
@@ -50,9 +59,13 @@ abstract class ActVHEFZK extends _i1.TableRow {
 
   DateTime date;
 
+  String basis;
+
   String note;
 
   int employeeId;
+
+  _i2.Employee? employee;
 
   bool signed;
 
@@ -62,8 +75,10 @@ abstract class ActVHEFZK extends _i1.TableRow {
   ActVHEFZK copyWith({
     int? id,
     DateTime? date,
+    String? basis,
     String? note,
     int? employeeId,
+    _i2.Employee? employee,
     bool? signed,
   });
   @override
@@ -71,8 +86,10 @@ abstract class ActVHEFZK extends _i1.TableRow {
     return {
       if (id != null) 'id': id,
       'date': date.toJson(),
+      'basis': basis,
       'note': note,
       'employeeId': employeeId,
+      if (employee != null) 'employee': employee?.toJson(),
       'signed': signed,
     };
   }
@@ -83,6 +100,7 @@ abstract class ActVHEFZK extends _i1.TableRow {
     return {
       'id': id,
       'date': date,
+      'basis': basis,
       'note': note,
       'employeeId': employeeId,
       'signed': signed,
@@ -94,8 +112,10 @@ abstract class ActVHEFZK extends _i1.TableRow {
     return {
       if (id != null) 'id': id,
       'date': date.toJson(),
+      'basis': basis,
       'note': note,
       'employeeId': employeeId,
+      if (employee != null) 'employee': employee?.allToJson(),
       'signed': signed,
     };
   }
@@ -112,6 +132,9 @@ abstract class ActVHEFZK extends _i1.TableRow {
         return;
       case 'date':
         date = value;
+        return;
+      case 'basis':
+        basis = value;
         return;
       case 'note':
         note = value;
@@ -138,6 +161,7 @@ abstract class ActVHEFZK extends _i1.TableRow {
     bool orderDescending = false,
     bool useCache = true,
     _i1.Transaction? transaction,
+    ActVHEFZKInclude? include,
   }) async {
     return session.db.find<ActVHEFZK>(
       where: where != null ? where(ActVHEFZK.t) : null,
@@ -148,6 +172,7 @@ abstract class ActVHEFZK extends _i1.TableRow {
       orderDescending: orderDescending,
       useCache: useCache,
       transaction: transaction,
+      include: include,
     );
   }
 
@@ -160,6 +185,7 @@ abstract class ActVHEFZK extends _i1.TableRow {
     bool orderDescending = false,
     bool useCache = true,
     _i1.Transaction? transaction,
+    ActVHEFZKInclude? include,
   }) async {
     return session.db.findSingleRow<ActVHEFZK>(
       where: where != null ? where(ActVHEFZK.t) : null,
@@ -168,15 +194,20 @@ abstract class ActVHEFZK extends _i1.TableRow {
       orderDescending: orderDescending,
       useCache: useCache,
       transaction: transaction,
+      include: include,
     );
   }
 
   @Deprecated('Will be removed in 2.0.0. Use: db.findById instead.')
   static Future<ActVHEFZK?> findById(
     _i1.Session session,
-    int id,
-  ) async {
-    return session.db.findById<ActVHEFZK>(id);
+    int id, {
+    ActVHEFZKInclude? include,
+  }) async {
+    return session.db.findById<ActVHEFZK>(
+      id,
+      include: include,
+    );
   }
 
   @Deprecated('Will be removed in 2.0.0. Use: db.deleteWhere instead.')
@@ -244,8 +275,8 @@ abstract class ActVHEFZK extends _i1.TableRow {
     );
   }
 
-  static ActVHEFZKInclude include() {
-    return ActVHEFZKInclude._();
+  static ActVHEFZKInclude include({_i2.EmployeeInclude? employee}) {
+    return ActVHEFZKInclude._(employee: employee);
   }
 
   static ActVHEFZKIncludeList includeList({
@@ -275,14 +306,18 @@ class _ActVHEFZKImpl extends ActVHEFZK {
   _ActVHEFZKImpl({
     int? id,
     required DateTime date,
+    required String basis,
     required String note,
     required int employeeId,
+    _i2.Employee? employee,
     required bool signed,
   }) : super._(
           id: id,
           date: date,
+          basis: basis,
           note: note,
           employeeId: employeeId,
+          employee: employee,
           signed: signed,
         );
 
@@ -290,15 +325,20 @@ class _ActVHEFZKImpl extends ActVHEFZK {
   ActVHEFZK copyWith({
     Object? id = _Undefined,
     DateTime? date,
+    String? basis,
     String? note,
     int? employeeId,
+    Object? employee = _Undefined,
     bool? signed,
   }) {
     return ActVHEFZK(
       id: id is int? ? id : this.id,
       date: date ?? this.date,
+      basis: basis ?? this.basis,
       note: note ?? this.note,
       employeeId: employeeId ?? this.employeeId,
+      employee:
+          employee is _i2.Employee? ? employee : this.employee?.copyWith(),
       signed: signed ?? this.signed,
     );
   }
@@ -308,6 +348,10 @@ class ActVHEFZKTable extends _i1.Table {
   ActVHEFZKTable({super.tableRelation}) : super(tableName: 'act_vh_efzk') {
     date = _i1.ColumnDateTime(
       'date',
+      this,
+    );
+    basis = _i1.ColumnString(
+      'basis',
       this,
     );
     note = _i1.ColumnString(
@@ -326,30 +370,60 @@ class ActVHEFZKTable extends _i1.Table {
 
   late final _i1.ColumnDateTime date;
 
+  late final _i1.ColumnString basis;
+
   late final _i1.ColumnString note;
 
   late final _i1.ColumnInt employeeId;
 
+  _i2.EmployeeTable? _employee;
+
   late final _i1.ColumnBool signed;
+
+  _i2.EmployeeTable get employee {
+    if (_employee != null) return _employee!;
+    _employee = _i1.createRelationTable(
+      relationFieldName: 'employee',
+      field: ActVHEFZK.t.employeeId,
+      foreignField: _i2.Employee.t.id,
+      tableRelation: tableRelation,
+      createTable: (foreignTableRelation) =>
+          _i2.EmployeeTable(tableRelation: foreignTableRelation),
+    );
+    return _employee!;
+  }
 
   @override
   List<_i1.Column> get columns => [
         id,
         date,
+        basis,
         note,
         employeeId,
         signed,
       ];
+
+  @override
+  _i1.Table? getRelationTable(String relationField) {
+    if (relationField == 'employee') {
+      return employee;
+    }
+    return null;
+  }
 }
 
 @Deprecated('Use ActVHEFZKTable.t instead.')
 ActVHEFZKTable tActVHEFZK = ActVHEFZKTable();
 
 class ActVHEFZKInclude extends _i1.IncludeObject {
-  ActVHEFZKInclude._();
+  ActVHEFZKInclude._({_i2.EmployeeInclude? employee}) {
+    _employee = employee;
+  }
+
+  _i2.EmployeeInclude? _employee;
 
   @override
-  Map<String, _i1.Include?> get includes => {};
+  Map<String, _i1.Include?> get includes => {'employee': _employee};
 
   @override
   _i1.Table get table => ActVHEFZK.t;
@@ -378,6 +452,8 @@ class ActVHEFZKIncludeList extends _i1.IncludeList {
 class ActVHEFZKRepository {
   const ActVHEFZKRepository._();
 
+  final attachRow = const ActVHEFZKAttachRowRepository._();
+
   Future<List<ActVHEFZK>> find(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<ActVHEFZKTable>? where,
@@ -387,6 +463,7 @@ class ActVHEFZKRepository {
     bool orderDescending = false,
     _i1.OrderByListBuilder<ActVHEFZKTable>? orderByList,
     _i1.Transaction? transaction,
+    ActVHEFZKInclude? include,
   }) async {
     return session.dbNext.find<ActVHEFZK>(
       where: where?.call(ActVHEFZK.t),
@@ -396,6 +473,7 @@ class ActVHEFZKRepository {
       limit: limit,
       offset: offset,
       transaction: transaction,
+      include: include,
     );
   }
 
@@ -407,6 +485,7 @@ class ActVHEFZKRepository {
     bool orderDescending = false,
     _i1.OrderByListBuilder<ActVHEFZKTable>? orderByList,
     _i1.Transaction? transaction,
+    ActVHEFZKInclude? include,
   }) async {
     return session.dbNext.findFirstRow<ActVHEFZK>(
       where: where?.call(ActVHEFZK.t),
@@ -415,6 +494,7 @@ class ActVHEFZKRepository {
       orderDescending: orderDescending,
       offset: offset,
       transaction: transaction,
+      include: include,
     );
   }
 
@@ -422,10 +502,12 @@ class ActVHEFZKRepository {
     _i1.Session session,
     int id, {
     _i1.Transaction? transaction,
+    ActVHEFZKInclude? include,
   }) async {
     return session.dbNext.findById<ActVHEFZK>(
       id,
       transaction: transaction,
+      include: include,
     );
   }
 
@@ -520,6 +602,29 @@ class ActVHEFZKRepository {
       where: where?.call(ActVHEFZK.t),
       limit: limit,
       transaction: transaction,
+    );
+  }
+}
+
+class ActVHEFZKAttachRowRepository {
+  const ActVHEFZKAttachRowRepository._();
+
+  Future<void> employee(
+    _i1.Session session,
+    ActVHEFZK actVHEFZK,
+    _i2.Employee employee,
+  ) async {
+    if (actVHEFZK.id == null) {
+      throw ArgumentError.notNull('actVHEFZK.id');
+    }
+    if (employee.id == null) {
+      throw ArgumentError.notNull('employee.id');
+    }
+
+    var $actVHEFZK = actVHEFZK.copyWith(employeeId: employee.id);
+    await session.dbNext.updateRow<ActVHEFZK>(
+      $actVHEFZK,
+      columns: [ActVHEFZK.t.employeeId],
     );
   }
 }

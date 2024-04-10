@@ -1,12 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:museum_inventory_app_client/museum_inventory_app_client.dart';
 import 'package:flutter/material.dart';
+import 'package:museum_inventory_app_flutter/presentation/cubits/act_vh_efzk_list/act_vh_efzk_list_cubit.dart';
 import 'package:museum_inventory_app_flutter/presentation/cubits/employee_list/employee_list_cubit.dart';
+import 'package:museum_inventory_app_flutter/presentation/screens/act_vh_efzk/act_vh_efzk_screen.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 
 import 'core/themes.dart';
 import 'presentation/cubits/items_list/items_list_cubit.dart';
 import 'presentation/cubits/main_view/main_view_cubit_cubit.dart';
+import 'presentation/cubits/owners_application/owners_application_cubit.dart';
 import 'presentation/cubits/owners_application_list/owners_application_list_cubit.dart';
 import 'presentation/cubits/owners_list/owners_list_cubit.dart';
 import 'presentation/screens/employee/employee_screen.dart';
@@ -47,6 +50,12 @@ class MyApp extends StatelessWidget {
         BlocProvider<OwnersApplicationListCubit>(
           create: (context) => OwnersApplicationListCubit(),
         ),
+        BlocProvider<OwnersApplicationCubit>(
+          create: (context) => OwnersApplicationCubit(),
+        ),
+        BlocProvider<ActVhEfzkListCubit>(
+          create: (context) => ActVhEfzkListCubit(),
+        ),
       ],
       child: MaterialApp(
         title: 'Museum Inventory',
@@ -57,6 +66,7 @@ class MyApp extends StatelessWidget {
           LoginScreen.routeName: (context) => const LoginScreen(),
           MainScreen.routeName: (context) => const MainScreen(),
           EmployeeScreen.routeName: (context) => const EmployeeScreen(),
+          ActVhEfzkScreen.routeName: (context) => const ActVhEfzkScreen(),
         },
       ),
     );
